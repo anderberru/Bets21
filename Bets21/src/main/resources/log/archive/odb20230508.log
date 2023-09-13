@@ -1,0 +1,35 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-05-08 22:53:11 #1 store] 
+Database 'C:\Users\Beñat\Desktop\ws\Bets21\src\main\resources\bets.temp' has been recovered (tr. 27-27)
+
+[2023-05-08 22:53:11 #2 store] 
+Database 'C:\Users\Beñat\Desktop\ws\Bets21\src\main\resources\bets.temp' is opened by 5008@DESKTOP-I34DTQI
+
+[2023-05-08 22:53:12 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-05-08 22:53:12 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-05-08 22:53:12 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-05-08 22:53:12 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-05-08 22:53:12 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-05-08 22:53:12 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-05-08 22:53:12 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-05-08 22:53:12 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-05-08 22:53:12 #11 type] 
+Type domain.Movement is not enhanced.
+

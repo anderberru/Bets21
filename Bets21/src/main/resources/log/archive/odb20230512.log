@@ -1,0 +1,32 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-05-12 00:56:23 #1 store] 
+Database 'C:\Users\Beñat\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 14736@DESKTOP-I34DTQI
+
+[2023-05-12 00:56:23 #2 type] 
+Type domain.Quote is not enhanced.
+
+[2023-05-12 00:56:23 #3 type] 
+Type domain.Bet is not enhanced.
+
+[2023-05-12 00:56:23 #4 type] 
+Type domain.Question is not enhanced.
+
+[2023-05-12 00:56:23 #5 type] 
+Type domain.User is not enhanced.
+
+[2023-05-12 00:56:23 #6 type] 
+Type domain.Registered is not enhanced.
+
+[2023-05-12 00:56:23 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-05-12 00:56:23 #8 type] 
+Type domain.Message is not enhanced.
+
+[2023-05-12 00:56:23 #9 type] 
+Type domain.Movement is not enhanced.
+
+[2023-05-12 00:56:23 #10 type] 
+Type domain.Admin is not enhanced.
+

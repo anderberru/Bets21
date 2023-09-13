@@ -1,0 +1,462 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 18:30:26 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 9880@LAPTOP-KMC7QC4S
+
+[2023-04-04 18:30:26 #2 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 18:30:26 #3 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 18:30:26 #4 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 18:30:26 #5 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 18:30:26 #6 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 18:30:26 #7 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 18:30:26 #8 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 18:30:26 #9 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 18:54:47 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 10092@LAPTOP-KMC7QC4S
+
+[2023-04-04 18:54:47 #2 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 18:54:48 #3 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 18:54:48 #4 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 18:54:48 #5 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 18:54:48 #6 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 18:54:48 #7 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 18:54:48 #8 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 18:54:48 #9 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 19:01:05 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 7-7)
+
+[2023-04-04 19:01:06 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 15608@LAPTOP-KMC7QC4S
+
+[2023-04-04 19:01:06 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 19:01:06 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 19:01:06 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 19:01:06 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 19:01:06 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 19:01:06 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 19:01:06 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 19:01:06 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 19:25:51 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 10184@LAPTOP-KMC7QC4S
+
+[2023-04-04 19:25:51 #2 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 19:25:51 #3 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 19:25:51 #4 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 19:25:51 #5 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 19:25:51 #6 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 19:25:51 #7 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 19:25:51 #8 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 19:25:51 #9 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 19:31:07 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 23-27)
+
+[2023-04-04 19:31:07 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 15568@LAPTOP-KMC7QC4S
+
+[2023-04-04 19:31:07 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 19:31:07 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 19:31:07 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 19:31:07 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 19:31:07 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 19:31:07 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 19:31:07 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 19:31:07 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 19:35:49 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 28-28)
+
+[2023-04-04 19:35:49 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 8108@LAPTOP-KMC7QC4S
+
+[2023-04-04 19:35:49 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 19:35:49 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 19:35:49 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 19:35:49 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 19:35:49 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 19:35:49 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 19:35:49 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 19:35:49 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 22:00:12 #1 store] 
+Database 'C:\Users\benat\OneDrive\Escritorio\EclipseWorkStation\Bets21\src\main\resources\bets.temp' has been recovered (tr. 29-35)
+
+[2023-04-04 22:00:12 #2 store] 
+Database 'C:\Users\benat\OneDrive\Escritorio\EclipseWorkStation\Bets21\src\main\resources\bets.temp' is opened by 5640@DESKTOP-3M7LG2F
+
+[2023-04-04 22:00:12 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 22:00:12 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 22:00:12 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 22:00:12 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 22:00:12 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 22:00:12 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 22:00:12 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 22:00:12 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 22:12:17 #1 store] 
+Database 'C:\Users\benat\OneDrive\Escritorio\EclipseWorkStation\Bets21\src\main\resources\bets.temp' is opened by 1836@DESKTOP-3M7LG2F
+
+[2023-04-04 22:12:17 #2 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 22:12:17 #3 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 22:12:17 #4 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 22:12:17 #5 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 22:12:17 #6 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 22:12:17 #7 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 22:12:17 #8 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 22:12:17 #9 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 22:41:32 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 36-58)
+
+[2023-04-04 22:41:32 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 11648@LAPTOP-KMC7QC4S
+
+[2023-04-04 22:41:33 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 22:41:33 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 22:41:33 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 22:41:33 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 22:41:33 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 22:41:33 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 22:41:33 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 22:41:33 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 22:46:58 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 3548@LAPTOP-KMC7QC4S
+
+[2023-04-04 22:46:58 #2 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 22:46:58 #3 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 22:46:58 #4 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 22:46:58 #5 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 22:46:58 #6 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 22:46:58 #7 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 22:46:58 #8 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 22:46:58 #9 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 22:51:33 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 59-59)
+
+[2023-04-04 22:51:33 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 2412@LAPTOP-KMC7QC4S
+
+[2023-04-04 22:51:34 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 22:51:34 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 22:51:34 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 22:51:34 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 22:51:34 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 22:51:34 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 22:51:34 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 22:51:34 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 22:55:16 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 60-60)
+
+[2023-04-04 22:55:16 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 9540@LAPTOP-KMC7QC4S
+
+[2023-04-04 22:55:16 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 22:55:16 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 22:55:16 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 22:55:17 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 22:55:17 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 22:55:17 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 22:55:17 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 22:55:17 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 23:08:52 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 61-68)
+
+[2023-04-04 23:08:52 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 15608@LAPTOP-KMC7QC4S
+
+[2023-04-04 23:08:53 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 23:08:53 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 23:08:53 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 23:08:53 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 23:08:53 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 23:08:53 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 23:08:53 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 23:08:53 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 23:16:25 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' has been recovered (tr. 69-72)
+
+[2023-04-04 23:16:25 #2 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 15872@LAPTOP-KMC7QC4S
+
+[2023-04-04 23:16:25 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 23:16:25 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 23:16:25 #5 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 23:16:25 #6 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 23:16:25 #7 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 23:16:25 #8 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 23:16:25 #9 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 23:16:25 #10 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-04-04 23:20:24 #1 store] 
+Database 'C:\Users\ander\eclipse-workspace\Bets21\src\main\resources\bets.temp' is opened by 2120@LAPTOP-KMC7QC4S
+
+[2023-04-04 23:20:25 #2 type] 
+Type domain.User is not enhanced.
+
+[2023-04-04 23:20:25 #3 type] 
+Type domain.Admin is not enhanced.
+
+[2023-04-04 23:20:25 #4 type] 
+Type domain.Question is not enhanced.
+
+[2023-04-04 23:20:25 #5 type] 
+Type domain.Quote is not enhanced.
+
+[2023-04-04 23:20:25 #6 type] 
+Type domain.Event is not enhanced.
+
+[2023-04-04 23:20:25 #7 type] 
+Type domain.Bet is not enhanced.
+
+[2023-04-04 23:20:25 #8 type] 
+Type domain.Registered is not enhanced.
+
+[2023-04-04 23:20:25 #9 type] 
+Type domain.Movement is not enhanced.
+
