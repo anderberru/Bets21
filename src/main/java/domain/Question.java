@@ -65,7 +65,7 @@ public class Question implements Serializable {
 	public void removeQuote(Quote quote) {
 		for (int i=0; i<this.quotes.size(); i++) {
 			Quote quo = this.quotes.get(i);
-			if(quo.getQuoteNumber()==quote.getQuoteNumber()) {
+			if(quo.getQuoteNumber().equals(quote.getQuoteNumber())) {
 				this.quotes.remove(i);
 			}
 		}
