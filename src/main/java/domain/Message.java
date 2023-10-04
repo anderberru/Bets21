@@ -2,6 +2,7 @@ package domain;
 
 	import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 	import javax.persistence.GeneratedValue;
@@ -75,7 +76,7 @@ import javax.persistence.Entity;
 		public void setTo(String to) {
 			this.to = to;
 		}
-
+		
 			
 		/*public Date getDate() {
 			return date;
@@ -85,6 +86,13 @@ import javax.persistence.Entity;
 			this.date = date;
 		}
 		*/
+		
+		
+		@Override
+		public int hashCode() {
+			return Objects.hash(date, from, message, messageNumber, to);
+		}
+
 		@Override
 		public boolean equals(Object obj) {
 	        if (this == obj)
@@ -98,7 +106,7 @@ import javax.persistence.Entity;
 	            return false;
 	        return true;
 	    }
-		
+
 		public String toString() {
 			return date+", From: "+from+", To: "+to+"; "+message;
 		}
