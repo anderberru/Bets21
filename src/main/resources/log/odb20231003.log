@@ -129,3 +129,38 @@ Type domain.Registered is not enhanced.
 [2023-10-03 20:02:14 #10 type] 
 Type domain.Movement is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-03 20:14:45 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 21-34)
+
+[2023-10-03 20:14:45 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 820@LAPTOP-KMC7QC4S
+
+[2023-10-03 20:14:45 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-03 20:14:45 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-03 20:14:45 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-03 20:14:45 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-03 20:14:45 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-03 20:14:45 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-03 20:14:45 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-03 20:14:45 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-03 20:14:45 #11 type] 
+Type domain.Movement is not enhanced.
+
