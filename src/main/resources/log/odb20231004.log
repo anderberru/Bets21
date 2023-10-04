@@ -100,3 +100,73 @@ Type domain.Registered is not enhanced.
 [2023-10-04 15:54:47 #10 type] 
 Type domain.Movement is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-04 18:38:59 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 77-90)
+
+[2023-10-04 18:39:00 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 2916@LAPTOP-KMC7QC4S
+
+[2023-10-04 18:39:00 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-04 18:39:00 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-04 18:39:00 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-04 18:39:00 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-04 18:39:00 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-04 18:39:00 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-04 18:39:00 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-04 18:39:00 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-04 18:39:00 #11 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-04 18:40:33 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 91-104)
+
+[2023-10-04 18:40:33 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 11508@LAPTOP-KMC7QC4S
+
+[2023-10-04 18:40:33 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-04 18:40:34 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-04 18:40:34 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-04 18:40:34 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-04 18:40:34 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-04 18:40:34 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-04 18:40:34 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-04 18:40:34 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-04 18:40:34 #11 type] 
+Type domain.Movement is not enhanced.
+

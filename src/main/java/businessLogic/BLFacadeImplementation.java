@@ -245,6 +245,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		
 		//String dateString = year + "-" + month + "-" + day;
 		//LocalDate.parse(dateString, DateTimeFormatter.ofPattern("uuuu-M-d").withResolverStyle(ResolverStyle.STRICT));
+		//bug hemen
 		
 		LocalDate localDate = LocalDate.now();
 		ZoneId defaultZoneId = ZoneId.systemDefault();
