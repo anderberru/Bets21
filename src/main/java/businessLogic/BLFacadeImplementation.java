@@ -339,15 +339,7 @@ public class BLFacadeImplementation  implements BLFacade {
 
     @WebMethod
     public void putResults(Event evi, String eventResult, Set<Quote> quotes) throws EventNotFinished, EventAlreadyRemoved, EventResultsAlreadyIn, BlankEventResult {
-    	LocalDate localDate = LocalDate.now();
-		ZoneId defaultZoneId = ZoneId.systemDefault();
-		Date currentDate = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
-		Date eventDate = evi.getEventDate();
-		/* Probak egiteko kenduta
-		if (eventDate.after(currentDate)) {
-			throw new EventNotFinished();
-		}
-		*/
+    	
 		if (eventResult == null || eventResult.isBlank()) {
 			throw new BlankEventResult();
 		}
