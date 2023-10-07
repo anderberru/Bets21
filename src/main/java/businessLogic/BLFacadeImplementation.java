@@ -32,6 +32,7 @@ import exceptions.*;
 public class BLFacadeImplementation  implements BLFacade {
 	DataAccess dbManager;
 	static final String INIT = "initialize";
+	
 	public BLFacadeImplementation()  {		
 		System.out.println("Creating BLFacadeImplementation instance");
 		ConfigXML c=ConfigXML.getInstance();
