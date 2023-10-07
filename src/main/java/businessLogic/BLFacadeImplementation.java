@@ -31,13 +31,13 @@ import exceptions.*;
 @WebService(endpointInterface = "businessLogic.BLFacade")
 public class BLFacadeImplementation  implements BLFacade {
 	DataAccess dbManager;
-
+	static final String INIT = "initialize";
 	public BLFacadeImplementation()  {		
 		System.out.println("Creating BLFacadeImplementation instance");
 		ConfigXML c=ConfigXML.getInstance();
 		
-		if (c.getDataBaseOpenMode().equals("initialize")) {
-		    dbManager=new DataAccess(c.getDataBaseOpenMode().equals("initialize"));
+		if (c.getDataBaseOpenMode().equals(INIT)) {
+		    dbManager=new DataAccess(c.getDataBaseOpenMode().equals(INIT));
 		    dbManager.initializeDB();
 		    } else
 		     dbManager=new DataAccess();
@@ -51,7 +51,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		System.out.println("Creating BLFacadeImplementation instance with DataAccess parameter");
 		ConfigXML c=ConfigXML.getInstance();
 		
-		if (c.getDataBaseOpenMode().equals("initialize")) {
+		if (c.getDataBaseOpenMode().equals(INIT)) {
 			da.open(true);
 			da.initializeDB();
 			da.close();
