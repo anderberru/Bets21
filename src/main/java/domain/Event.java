@@ -113,7 +113,7 @@ public class Event implements Serializable {
 	public void removeQuestion(Question question) {
 		for (int i=0; i<this.questions.size(); i++) {
 			Question q = this.questions.get(i);
-			if(q.getQuestionNumber()==question.getQuestionNumber()) {
+			if(q.getQuestionNumber().equals(question.getQuestionNumber())) {
 				this.questions.remove(i);
 			}
 		}
