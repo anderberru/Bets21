@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLInputFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -75,6 +76,16 @@ public class ConfigXML {
 		
 		  try {
 			  DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			  // Vulnerability-aren soluzioa
+			  
+			// Applicable to:
+			// - DocumentBuilderFactory
+			// - SAXParserFactory
+			dbFactory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			dbFactory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+
+			  //------------
+			  
 			  DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			  Document doc = dBuilder.parse(new File(configFile));
 			  doc.getDocumentElement().normalize();
