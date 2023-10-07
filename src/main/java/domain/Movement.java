@@ -2,6 +2,7 @@ package domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -85,6 +86,11 @@ public class Movement implements Serializable {
 
 	public void setMoveNumber(Integer moveNumber) {
 		this.moveNumber = moveNumber;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(moveNumber, value, description, date, registered);
 	}
 	
 	@Override
