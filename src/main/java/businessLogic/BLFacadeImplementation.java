@@ -18,7 +18,6 @@ import dataAccess.DataAccess;
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
-import domain.User;
 import domain.Bet;
 import domain.Event;
 import domain.Message;
