@@ -3,14 +3,19 @@ package test.dataAccess;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
+import domain.Bet;
 import domain.Event;
 import domain.Question;
+import domain.Quote;
+import domain.Registered;
+import domain.User;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
@@ -89,5 +94,62 @@ public class TestDataAccess {
 			return false;
 			
 		}
+		
+		public User addUser(String username, String pass, String fullname, String DNI, String payMethod, Date date, String email, int money) {
+			try {
+				User register;
+				db.getTransaction().begin();
+				
+				register = new Registered(username, pass, fullname, DNI, date, payMethod, email, money);
+				
+				db.persist(register);
+				db.getTransaction().commit();
+				System.out.println("Gordeta " + register.getUserName());
+				return register;
+			} catch (Exception e) {
+				return null;
+			}
+		}
+		
+		public User addUserWithBet(String username, String pass, String fullname, String DNI, String payMethod, Date date, String email, int money, double value, Event ev) {
+			try {
+				Event e = db.find(Event.class, ev.getEventNumber());
+				Quote qu = e.getQuestions().get(0).getQuotes().get(0);
+				Quote quo = db.find(Quote.class, qu.getQuoteNumber());
+				User register;
+				db.getTransaction().begin();
+				Vector<Quote> quotes = new Vector<>();
+				quotes.add(quo);
+				register = new Registered(username, pass, fullname, DNI, date, payMethod, email, money);
+				Bet newBet = ((Registered) register).addBet(value, quotes);
+				quo.addBet(newBet);
+				
+				db.persist(register);
+				db.persist(e);
+				db.getTransaction().commit();
+				System.out.println("Gordeta " + register.getUserName());
+				return register;
+			} catch (Exception e) {
+				return null;
+			}
+		}
+		
+		public Event addEventWithQuestionWithQuote(String desc, Date d, String question, float qty, Quote quo) {
+			System.out.println(">> DataAccessTest: addEvent");
+			Event ev=null;
+				db.getTransaction().begin();
+				try {
+				    ev=new Event(desc,d);
+				    Question ques = ev.addQuestion(question, qty);
+				    ques.addQuote(quo.getBet_description(), quo.getValue());
+					db.persist(ev);
+					db.getTransaction().commit();
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				return ev;
+	    }
+		
 }
 
