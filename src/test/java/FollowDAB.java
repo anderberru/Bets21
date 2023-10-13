@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -26,7 +26,7 @@ public class FollowDAB {
 	static TestDataAccess testDA=new TestDataAccess();
 
 
-	Date date;
+	//private Date date;
 
 	private String currentUser;
 	private String followedUser;
@@ -39,7 +39,7 @@ public class FollowDAB {
 	@Before
 	public void inicialize() {
 
-		date = new Date("05/10/2022");
+			
 
 
 		//		Registered user1 = new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0);
@@ -56,8 +56,17 @@ public class FollowDAB {
 	//Follow ondo joan beha da.
 	@Test
 	public void test1() {
+		Date date=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		testDA.open();
+		
 		User user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		User user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		testDA.close();
@@ -81,6 +90,14 @@ public class FollowDAB {
 
 	@Test
 	public void test2() {
+		Date date=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		testDA.open();
 		//User user1 = testDA.addUser("Paco", "1234", "Paco", "1234", "cash", date, "mail", 0);
@@ -109,6 +126,14 @@ public class FollowDAB {
 
 	@Test
 	public void test3() {
+		Date date=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		testDA.open();
 		User user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
@@ -136,6 +161,14 @@ public class FollowDAB {
 
 	@Test
 	public void test4() {
+		Date date=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		testDA.open();
 		User user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
@@ -163,6 +196,14 @@ public class FollowDAB {
 
 	@Test
 	public void test5() {
+		Date date=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		testDA.open();
 		User user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
@@ -190,6 +231,14 @@ public class FollowDAB {
 
 	@Test
 	public void test6() {
+		Date date=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		testDA.open();
 		User user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
@@ -219,6 +268,14 @@ public class FollowDAB {
 
 	@Test
 	public void test7() {
+		Date date=null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			date = sdf.parse("05/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		testDA.open();
 		User user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
