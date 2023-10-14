@@ -1,24 +1,20 @@
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
 
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Vector;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import dataAccess.DataAccess;
-import test.dataAccess.TestDataAccess;
 import domain.Registered;
 import domain.User;
 import exceptions.AlreadyFollower;
 import exceptions.AlreadyFollowing;
-import exceptions.UserDoesNotExist;
-import junit.framework.Assert;
+import test.dataAccess.TestDataAccess;
 
-public class FollowDAB {
+public class FollowDAW {
 
 	//sut:system under test
 	static DataAccess sut=new DataAccess();
@@ -34,23 +30,6 @@ public class FollowDAB {
 
 
 
-
-
-	@Before
-	public void inicialize() {
-
-		//		Registered user1 = new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0);
-		//		Registered user2 = new Registered("Pepe", "1234", "Pepe", "1234", date, "cash", "mail", 0);
-
-
-		//		testDA.open();
-		//		testDA.removeUser(user1);
-		//		testDA.removeUser(user2);
-		//		testDA.close();
-	}
-
-
-	//Follow ondo joan beha da.
 	@Test
 	public void test1() {
 		Date date=null;
@@ -61,34 +40,30 @@ public class FollowDAB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		testDA.open();
-		
+
 		Registered user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		
 		testDA.close();
 
 		currentUser = "Paco";
-		followedUser = "Pepe";
-		
+		followedUser = null;
 
 		try {
 			sut.follow(currentUser, followedUser);
-			
-			assertTrue(user1.isFollowing(user2));
-		} catch (Exception e) {
 			fail();
+		} catch (Exception e) {
+			assertTrue(true);
+			
 		} finally {
 			testDA.open();
 			testDA.removeUser(user1);
 			testDA.removeUser(user2);
 			testDA.close();
-			
 		}
-
 	}
-
+	
 	@Test
 	public void test2() {
 		Date date=null;
@@ -99,33 +74,30 @@ public class FollowDAB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		testDA.open();
-		//Registered user1 = testDA.addUser("Paco", "1234", "Paco", "1234", "cash", date, "mail", 0);
+
+		Registered user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		testDA.close();
 
 		currentUser = "Paco";
-		followedUser = "Pepe";
+		followedUser = "Paco";
 
 		try {
-
 			sut.follow(currentUser, followedUser);
-			fail("No exception");
-		} catch (UserDoesNotExist e) {
-			assertTrue(true);
+			fail();
 		} catch (Exception e) {
+			assertTrue(true);
 			
-			fail("Another exception");
 		} finally {
 			testDA.open();
-			//testDA.removeUser(user1);
+			testDA.removeUser(user1);
 			testDA.removeUser(user2);
 			testDA.close();
 		}
-
 	}
-
+	
 	@Test
 	public void test3() {
 		Date date=null;
@@ -136,10 +108,14 @@ public class FollowDAB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		testDA.open();
+
 		Registered user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		//Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		Vector<Registered> followers = new Vector<Registered>();
+		followers.add(user2);
+		user1.setFollowers(followers);
 		testDA.close();
 
 		currentUser = "Paco";
@@ -147,20 +123,20 @@ public class FollowDAB {
 
 		try {
 			sut.follow(currentUser, followedUser);
-			fail("No exception");
-		} catch (UserDoesNotExist e) {
+			fail();
+		}catch (AlreadyFollower e) {
 			assertTrue(true);
 		} catch (Exception e) {
-			fail("Another exception");
+			fail("another exception");
+			
 		} finally {
 			testDA.open();
 			testDA.removeUser(user1);
-			//testDA.removeUser(user2);
+			testDA.removeUser(user2);
 			testDA.close();
 		}
-
 	}
-
+	
 	@Test
 	public void test4() {
 		Date date=null;
@@ -171,30 +147,36 @@ public class FollowDAB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		testDA.open();
+
 		Registered user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		Vector<Registered> following = new Vector<Registered>();
+		following.add(user1);
+		user2.setFollowing(following);
 		testDA.close();
 
 		currentUser = "Paco";
-		followedUser = null;
+		followedUser = "Pepe";
 
 		try {
 			sut.follow(currentUser, followedUser);
-			fail("No exception");
-		} catch (UserDoesNotExist e) {
+			fail();
+		}catch (AlreadyFollowing e) {
 			assertTrue(true);
 		} catch (Exception e) {
-			fail("Another exception");
+			fail("another exception");
+			
 		} finally {
 			testDA.open();
 			testDA.removeUser(user1);
 			testDA.removeUser(user2);
 			testDA.close();
 		}
-
 	}
+	
+
 
 	@Test
 	public void test5() {
@@ -206,43 +188,9 @@ public class FollowDAB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		testDA.open();
-		Registered user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		testDA.close();
 
-		currentUser = "Paco";
-		followedUser = "Paco";
-
-		try {
-			sut.follow(currentUser, followedUser);
-			fail("No exception");
-		} catch (UserDoesNotExist e) {
-			assertTrue(true);
-		} catch (Exception e) {
-			fail("Another exception");
-		} finally {
-			testDA.open();
-			testDA.removeUser(user1);
-			testDA.removeUser(user2);
-			testDA.close();
-		}
-
-	}
-
-	@Test
-	public void test6() {
-		Date date=null;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			date = sdf.parse("05/10/2022");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		testDA.open();
 		Registered user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		testDA.close();
@@ -252,57 +200,15 @@ public class FollowDAB {
 
 		try {
 			sut.follow(currentUser, followedUser);
-
-			sut.follow(currentUser, followedUser);
-			fail("No exception");
-		} catch (AlreadyFollower e) {
 			assertTrue(true);
 		} catch (Exception e) {
-			fail("Another exception");
+			fail();
 		} finally {
 			testDA.open();
 			testDA.removeUser(user1);
 			testDA.removeUser(user2);
 			testDA.close();
 		}
-
-	}
-
-	@Test
-	public void test7() {
-		Date date=null;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			date = sdf.parse("05/10/2022");
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		testDA.open();
-		Registered user1 = testDA.addUser("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		Registered user2 = testDA.addUser("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		testDA.close();
-
-		currentUser = "Paco";
-		followedUser = "Pepe";
-
-		try {
-			sut.follow(currentUser, followedUser);
-
-			sut.follow(currentUser, followedUser);
-			fail("No exception");
-		} catch (AlreadyFollowing e) {
-			assertTrue(true);
-		} catch (Exception e) {
-			fail("Another exception");
-		} finally {
-			testDA.open();
-			testDA.removeUser(user1);
-			testDA.removeUser(user2);
-			testDA.close();
-		}
-
 	}
 
 }

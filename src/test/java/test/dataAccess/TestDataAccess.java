@@ -69,6 +69,18 @@ public class TestDataAccess {
 		} else 
 		return false;
     }
+	
+	public boolean removeUser(User us) {
+		System.out.println(">> DataAccessTest: removeUser");
+		User u = db.find(User.class, us.getUserName());
+		if (u!=null) {
+			db.getTransaction().begin();
+			db.remove(u);
+			db.getTransaction().commit();
+			return true;
+		} else 
+		return false;
+    }
 		
 		public Event addEventWithQuestion(String desc, Date d, String question, float qty) {
 			System.out.println(">> DataAccessTest: addEvent");
@@ -95,9 +107,9 @@ public class TestDataAccess {
 			
 		}
 		
-		public User addUser(String username, String pass, String fullname, String DNI, String payMethod, Date date, String email, int money) {
+		public Registered addUser(String username, String pass, String fullname, String DNI, String payMethod, Date date, String email, int money) {
 			try {
-				User register;
+				Registered register;
 				db.getTransaction().begin();
 				
 				register = new Registered(username, pass, fullname, DNI, date, payMethod, email, money);
@@ -150,6 +162,8 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+		
+		
 		
 }
 
