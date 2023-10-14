@@ -2,8 +2,10 @@ package test.dataAccess;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.persistence.EntityManager;
@@ -199,6 +201,45 @@ public class TestDataAccess {
 				return ev;
 	    }
 		
+		public Event addEventWithQuestionWithQuoteWithUser(String desc, Date d, String question, float qty, String quotedesc, double Qvalue, String username, Date userdate) {
+			System.out.println(">> DataAccessTest: addEvent");
+			Event ev=null;
+				db.getTransaction().begin();
+				try {
+				    ev=new Event(desc,d);
+				    Question ques = ev.addQuestion(question, qty);
+				    ques.addQuote(quotedesc, Qvalue);
+				    Registered reg = new Registered(username, "123", "", "", userdate, "", "", 50);
+					db.persist(ev);
+					db.persist(reg);
+					db.getTransaction().commit();
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				return ev;
+	    }
+		
+		public Event addEventWithQuestionWithQuoteWithUserWithFollowers(String desc, Date d, String question, float qty, String quotedesc, double Qvalue, String username, Date userdate, String follower) {
+			System.out.println(">> DataAccessTest: addEvent");
+			Event ev=null;
+				db.getTransaction().begin();
+				try {
+				    ev=new Event(desc,d);
+				    Question ques = ev.addQuestion(question, qty);
+				    ques.addQuote(quotedesc, Qvalue);
+				    Registered reg = new Registered(username, "123", "", "", userdate, "", "", 50);
+				    reg.addFollower(new Registered(follower, "123", "", "", userdate, "", "", 50));
+					db.persist(ev);
+					db.persist(reg);
+					db.getTransaction().commit();
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				return ev;
+	    }
+		
 		
 		public Event addEventWithQuestionWithQuoteWithUserWithBet(String desc, Date d, String question, float qty, String quotedesc, double Qvalue, String username, double betValue, Date date) {
 			System.out.println(">> DataAccessTest: addEvent");
@@ -209,7 +250,15 @@ public class TestDataAccess {
 				    Question ques = ev.addQuestion(question, qty);
 				    ques.addQuote(quotedesc, Qvalue);
 				    Registered reg = new Registered(username, "123", "", "", date, "", "", 50);
-				    reg.addBet(betValue, ques.getQuotes());
+				    Bet b= reg.addBet(betValue, ques.getQuotes());
+				    Quote quo = ques.getQuotes().get(0);
+				    quo.addBet(b);
+				    Vector<Quote> quotes = new Vector<>();
+				    quotes.add(quo);
+				    ques.setQuotes(quotes);
+				    Vector<Question> questions = new Vector<>();
+				    questions.add(ques);
+				    ev.setQuestions(questions);
 					db.persist(ev);
 					db.persist(reg);
 					db.getTransaction().commit();
