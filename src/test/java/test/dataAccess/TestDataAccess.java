@@ -3,6 +3,7 @@ package test.dataAccess;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.Vector;
 
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import domain.Question;
 import domain.Quote;
 import domain.Registered;
 import domain.User;
+import exceptions.QuoteAlreadyExist;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
@@ -70,9 +72,9 @@ public class TestDataAccess {
 		return false;
     }
 	
-	public boolean removeUser(User us) {
+	public boolean removeUser(User user) {
 		System.out.println(">> DataAccessTest: removeUser");
-		User u = db.find(User.class, us.getUserName());
+		User u = db.find(User.class, user.getUserName());
 		if (u!=null) {
 			db.getTransaction().begin();
 			db.remove(u);
@@ -82,6 +84,18 @@ public class TestDataAccess {
 		return false;
     }
 		
+	
+	public boolean removeUserWithName(String username) {
+		System.out.println(">> DataAccessTest: removeUser");
+		User u = db.find(User.class, username);
+		if (u!=null) {
+			db.getTransaction().begin();
+			db.remove(u);
+			db.getTransaction().commit();
+			return true;
+		} else 
+		return false;
+    }
 		public Event addEventWithQuestion(String desc, Date d, String question, float qty) {
 			System.out.println(">> DataAccessTest: addEvent");
 			Event ev=null;
@@ -97,6 +111,27 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+		
+		public Quote addQuote(String bet_description, double value, Event event) throws  QuoteAlreadyExist {
+			
+			Event ev = db.find(Event.class, event.getEventNumber());
+			Question ques = db.find(Question.class, ev.getQuestions().get(0));
+			
+			
+			if (ques.DoesQuoteExists(bet_description, value)) throw new QuoteAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQuoteAlreadyExist"));
+			
+			db.getTransaction().begin();
+						
+			Quote q = ques.addQuote(bet_description, value);
+
+			db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
+							// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+			db.getTransaction().commit();
+			return q;
+		
+	}
+	
+		
 		public boolean existQuestion(Event ev,Question q) {
 			System.out.println(">> DataAccessTest: existQuestion");
 			Event e = db.find(Event.class, ev.getEventNumber());
@@ -123,21 +158,22 @@ public class TestDataAccess {
 			}
 		}
 		
-		public User addUserWithBet(String username, String pass, String fullname, String DNI, String payMethod, Date date, String email, int money, double value, Event ev) {
+		public Registered addUserWithBet(String username, String pass, String fullname, String DNI, String payMethod, Date date, String email, int money, double value, Event ev) {
 			try {
 				Event e = db.find(Event.class, ev.getEventNumber());
 				Quote qu = e.getQuestions().get(0).getQuotes().get(0);
 				Quote quo = db.find(Quote.class, qu.getQuoteNumber());
-				User register;
+				
 				db.getTransaction().begin();
 				Vector<Quote> quotes = new Vector<>();
 				quotes.add(quo);
-				register = new Registered(username, pass, fullname, DNI, date, payMethod, email, money);
+				Registered register = new Registered(username, pass, fullname, DNI, date, payMethod, email, money);
 				Bet newBet = ((Registered) register).addBet(value, quotes);
 				quo.addBet(newBet);
 				
+				db.persist(quo);
 				db.persist(register);
-				db.persist(e);
+				
 				db.getTransaction().commit();
 				System.out.println("Gordeta " + register.getUserName());
 				return register;
@@ -162,6 +198,49 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+		
+		
+		public Event addEventWithQuestionWithQuoteWithUserWithBet(String desc, Date d, String question, float qty, String quotedesc, double Qvalue, String username, double betValue, Date date) {
+			System.out.println(">> DataAccessTest: addEvent");
+			Event ev=null;
+				db.getTransaction().begin();
+				try {
+				    ev=new Event(desc,d);
+				    Question ques = ev.addQuestion(question, qty);
+				    ques.addQuote(quotedesc, Qvalue);
+				    Registered reg = new Registered(username, "123", "", "", date, "", "", 50);
+				    reg.addBet(betValue, ques.getQuotes());
+					db.persist(ev);
+					db.persist(reg);
+					db.getTransaction().commit();
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				return ev;
+	    }
+		
+		
+		public Bet addBet(String username, double value, Event ev) {
+			Bet b=null;
+			Event e = db.find(Event.class, ev.getEventNumber());
+			Question q = db.find(Question.class, e.getQuestions().get(0).getQuestionNumber());
+			Quote quo = db.find(Quote.class, q.getQuotes().get(0).getQuoteNumber());
+			Registered user = db.find(Registered.class, username);
+			db.getTransaction().begin();
+			try {
+				b = user.addBet(value, q.getQuotes());
+				quo.addBet(b);
+			   
+				db.persist(e);
+				db.persist(user);
+				db.getTransaction().commit();
+			}
+			catch (Exception ex){
+				return null;
+			}
+			return b;
+		}
 		
 		
 		
