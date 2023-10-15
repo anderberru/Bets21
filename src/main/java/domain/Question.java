@@ -199,6 +199,7 @@ public class Question implements Serializable {
 	public int hashCode() {
 		return Objects.hash(questionNumber, question, betMinimum, event);
 	}
+	
 
 	public Vector<Quote> duplicateQuotes(Question newQues){
 		Vector<Quote> ret = new Vector<Quote>();
