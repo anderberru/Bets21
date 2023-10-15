@@ -72,7 +72,7 @@ public class RemoveEventBLBMTest {
 			Mockito.verify(dataAccess,Mockito.times(1)).removeEvent(null);
 		} catch (Exception e) {
 			assertTrue(true);}
-	}
+	} 
 	
 	@Test
 	public void test3() {
