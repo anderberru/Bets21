@@ -81,7 +81,7 @@ public class AddBetDAWTest {
 
 
 			//if the program continues fail
-			//fail();
+			fail();
 		} catch (BetOnSameQuote e) {
 			// if the program goes to this point OK  
 			assertTrue(true);
