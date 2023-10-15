@@ -319,7 +319,7 @@ public class BLFacadeImplementation  implements BLFacade {
     	
     	dbManager.open(false);
     	
-    	bet = dbManager.addBet(value, event, selectedQuotes, username, new Vector<>());
+    	bet = dbManager.addBet(value, event, selectedQuotes, username, new Vector< >());
 		
 		dbManager.close();
 		
