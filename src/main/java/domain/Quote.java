@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Vector;
 
 
@@ -98,6 +99,12 @@ public class Quote implements Serializable {
 	
 	public String toString() {
 		return value+"; "+bet_description;
+		
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(quoteNumber, bet_description, value, question);
 	}
 	
 	@Override
