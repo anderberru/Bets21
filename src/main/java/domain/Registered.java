@@ -194,6 +194,7 @@ public class Registered extends User implements Serializable {
 		}
 	}
 	
+	
 	public void addFollower(Registered user) {
 		this.followers.add(user);
 	}
