@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.*;
+import java.util.Objects;
 import java.util.Vector;
 
 import javax.persistence.*;
@@ -193,6 +194,11 @@ public class Question implements Serializable {
             return false;
         return true;
     }
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(questionNumber, question, betMinimum, event);
+	}
 
 	public Vector<Quote> duplicateQuotes(Question newQues){
 		Vector<Quote> ret = new Vector<Quote>();
