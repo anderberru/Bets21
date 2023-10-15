@@ -77,6 +77,7 @@ public class FollowBLBMTest {
 			e.printStackTrace();
 		}
 		
+		
 		dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		//dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		
