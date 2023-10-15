@@ -12,7 +12,6 @@ import java.util.Vector;
 import org.junit.Test;
 
 import configuration.ConfigXML;
-import configuration.UtilDate;
 //import dataAccess.DataAccessInterface;
 import dataAccess.DataAccess;
 import domain.Bet;
@@ -20,34 +19,30 @@ import domain.Event;
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
-import domain.User;
 import exceptions.BetOnSameQuote;
 import exceptions.EventFinished;
 import exceptions.NotEnoughMoney;
 import exceptions.QuestionAlreadyExist;
-import exceptions.QuoteAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 import test.dataAccess.TestDataAccess;
 
-public class AddBetDAWTest {
+public class AddBetDABTest {
 
-	//sut:system under test
-	static DataAccess sut=new DataAccess();
-
-	//additional operations needed to execute the test 
-	static TestDataAccess testDA=new TestDataAccess();
+	 //sut:system under test
+	 static DataAccess sut=new DataAccess();
+	 
+	 //additional operations needed to execute the test 
+	 static TestDataAccess testDA=new TestDataAccess();
 
 	private Event ev;
-	private String username = "user1";
-	private Registered u;
-	private Quote quo;
-
+	
+	
 	@Test
 	public void test1() {
 		try {
 
 			//define paramaters
-			String eventText="event1";
+			String eventText="A vs B";
 			String queryText="query1";
 			Float betMinimum=new Float(2);
 
@@ -58,7 +53,7 @@ public class AddBetDAWTest {
 			Date oneDate=null;
 			Date userDate=null;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("09/10/2023");
 				userDate = sdf.parse("06/11/2002");
 
 			} catch (ParseException e) {
@@ -69,7 +64,7 @@ public class AddBetDAWTest {
 			//configure the state of the system (create object in the dabatase)
 			testDA.open();
 			this.ev = testDA.addEventWithQuestionWithQuoteWithUserWithBet(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, username, 10, userDate);
+					, 2, "Ander", 3, userDate);
 
 			testDA.close();
 
@@ -77,7 +72,7 @@ public class AddBetDAWTest {
 
 			//invoke System Under Test (sut)  
 
-			sut.addBet(2.0, this.ev, quotes, username, new Vector<Registered>());
+			sut.addBet(3.0, this.ev, quotes, "Ander", new Vector<Registered>());
 
 
 			//if the program continues fail
@@ -91,7 +86,7 @@ public class AddBetDAWTest {
 			//Remove the created objects in the database (cascade removing)   
 			testDA.open();
 			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName(username);
+			boolean b2=testDA.removeUserWithName("Ander");
 			testDA.close();
 			System.out.println("Finally "+b+" "+b2);          
 		}
@@ -102,7 +97,7 @@ public class AddBetDAWTest {
 		try {
 
 			//define paramaters
-			String eventText="event1";
+			String eventText="A vs B";
 			String queryText="query1";
 			Float betMinimum=new Float(2);
 
@@ -113,7 +108,99 @@ public class AddBetDAWTest {
 			Date oneDate=null;
 			Date userDate=null;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("09/10/2023");
+				userDate = sdf.parse("06/11/2002");
+
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+
+			//configure the state of the system (create object in the dabatase)
+			this.ev = new Event("A vs F", oneDate);
+			
+			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
+
+			//invoke System Under Test (sut)  
+
+			sut.addBet(3.0, this.ev, quotes, "Pepe", new Vector<Registered>());
+
+
+			//if the program continues fail
+			fail();
+		} catch (BetOnSameQuote e) {
+			// if the program goes to this point OK  
+			fail();
+		} catch (NotEnoughMoney e) {
+			fail();
+		} catch (Exception e){
+			assertTrue(true);
+		} 
+	}
+	
+	@Test
+	public void test3() {
+		try {
+
+			//define paramaters
+			String eventText="A vs B";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+
+			Set<Quote> quotes = new HashSet<>();
+
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;
+			Date userDate=null;
+			try {
+				oneDate = sdf.parse("09/10/2023");
+				userDate = sdf.parse("06/11/2002");
+
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+
+			//configure the state of the system (create object in the dabatase)
+			this.ev = null;
+			
+			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
+
+			//invoke System Under Test (sut)  
+
+			sut.addBet(3.0, this.ev, quotes, "Ander", new Vector<Registered>());
+
+
+			//if the program continues fail
+			fail();
+		} catch (BetOnSameQuote e) {
+			// if the program goes to this point OK  
+			fail();
+		} catch (NotEnoughMoney e) {
+			fail();
+		} catch (Exception e){
+			assertTrue(true);
+		} 
+	}
+	
+	@Test
+	public void test4() {
+		try {
+
+			//define paramaters
+			String eventText="A vs B";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+
+			Set<Quote> quotes = new HashSet<>();
+
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;
+			Date userDate=null;
+			try {
+				oneDate = sdf.parse("09/10/2023");
 				userDate = sdf.parse("06/11/2002");
 
 			} catch (ParseException e) {
@@ -124,18 +211,78 @@ public class AddBetDAWTest {
 			//configure the state of the system (create object in the dabatase)
 			testDA.open();
 			this.ev = testDA.addEventWithQuestionWithQuoteWithUser(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, username, userDate);
+					, 2, "Lander", userDate);
 
 			testDA.close();
 
 			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
 
 			//invoke System Under Test (sut)  
+			Vector<Registered> alreadyBet = new Vector<>();
+			alreadyBet.add(new Registered("fol1", "123", "", "", userDate, "", "", 50));
+			Bet bet = sut.addBet(3.0, this.ev, quotes, "Lander", alreadyBet);
 
-			sut.addBet(52.0, this.ev, quotes, username, new Vector<Registered>());
+
+			//check results
+			assertTrue(bet.getValue()==3.0);
+			assertTrue(bet.getQuotes().get(0).getQuoteNumber().equals(this.ev.getQuestions().get(0).getQuotes().get(0).getQuoteNumber()));
+			assertTrue(bet.getRegistered().getUserName().equals("Lander"));
+			
+		} catch (BetOnSameQuote e) {
+			// if the program goes to this point OK  
+			fail();
+		} catch (NotEnoughMoney e) {
+			fail();
+		} finally {
+			//Remove the created objects in the database (cascade removing)   
+			testDA.open();
+			boolean b=testDA.removeEvent(ev);
+			boolean b2=testDA.removeUserWithName("Lander");
+			testDA.close();
+			System.out.println("Finally "+b+" "+b2);          
+		}
+	}
+	
+	@Test
+	public void test5() {
+		try {
+
+			//define paramaters
+			String eventText="A vs B";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+
+			Set<Quote> quotes = new HashSet<>();
 
 
-			//if the program continues fail
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;
+			Date userDate=null;
+			try {
+				oneDate = sdf.parse("09/10/2023");
+				userDate = sdf.parse("06/11/2002");
+
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			this.ev = testDA.addEventWithQuestionWithQuoteWithUser(eventText,oneDate,queryText, betMinimum, "kuota1"
+					, 2, "Damian", userDate);
+
+			testDA.close();
+
+			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
+
+			//invoke System Under Test (sut)  
+			Vector<Registered> alreadyBet = new Vector<>();
+			
+			Bet bet = sut.addBet(52.0, this.ev, quotes, "Damian", alreadyBet);
+
+
+			// if the program goes to this point fail  
 			fail();
 		} catch (BetOnSameQuote e) {
 			// if the program goes to this point OK  
@@ -146,18 +293,18 @@ public class AddBetDAWTest {
 			//Remove the created objects in the database (cascade removing)   
 			testDA.open();
 			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName(username);
+			boolean b2=testDA.removeUserWithName("Damian");
 			testDA.close();
 			System.out.println("Finally "+b+" "+b2);          
 		}
 	}
-
+	
 	@Test
-	public void test3() {
+	public void testMuga1() {
 		try {
 
 			//define paramaters
-			String eventText="event1";
+			String eventText="A vs B";
 			String queryText="query1";
 			Float betMinimum=new Float(2);
 
@@ -168,7 +315,7 @@ public class AddBetDAWTest {
 			Date oneDate=null;
 			Date userDate=null;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("09/10/2023");
 				userDate = sdf.parse("06/11/2002");
 
 			} catch (ParseException e) {
@@ -179,7 +326,7 @@ public class AddBetDAWTest {
 			//configure the state of the system (create object in the dabatase)
 			testDA.open();
 			this.ev = testDA.addEventWithQuestionWithQuoteWithUser(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, username, userDate);
+					, 2, "user50", userDate);
 
 			testDA.close();
 
@@ -187,71 +334,15 @@ public class AddBetDAWTest {
 
 			//invoke System Under Test (sut)  
 			Vector<Registered> alreadyBet = new Vector<>();
-			alreadyBet.add(new Registered("user2", "123", "", "", userDate, "", "", 50));
-			Bet bet = sut.addBet(52.0, this.ev, quotes, username, alreadyBet);
+			alreadyBet.add(new Registered("fol1", "123", "", "", userDate, "", "", 50));
+			Bet bet = sut.addBet(50, this.ev, quotes, "user50", alreadyBet);
 
 
 			//check results
-			assertEquals(bet, null);
-		} catch (BetOnSameQuote e) {
-			// if the program goes to this point OK  
-			fail();
-		} catch (NotEnoughMoney e) {
-			fail();
-		} finally {
-			//Remove the created objects in the database (cascade removing)   
-			testDA.open();
-			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName(username);
-			testDA.close();
-			System.out.println("Finally "+b+" "+b2);          
-		}
-	}
-
-	@Test
-	public void test4() {
-		try {
-
-			//define paramaters
-			String eventText="event1";
-			String queryText="query1";
-			Float betMinimum=new Float(2);
-
-			Set<Quote> quotes = new HashSet<>();
-
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("05/10/2022");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			this.ev = testDA.addEventWithQuestionWithQuoteWithUserWithFollowers(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, "user3", userDate, "user2");
-
-			testDA.close();
-
-			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
-			Vector<Registered> alreadyBet = new Vector<>();
-
-
-			//invoke System Under Test (sut)  
-
-			Bet bet = sut.addBet(10.0, this.ev, quotes, "user3", alreadyBet);
-
-
-			//check results
-			assertTrue(bet.getValue()==10.0);
+			assertTrue(bet.getValue()==50.0);
 			assertTrue(bet.getQuotes().get(0).getQuoteNumber().equals(this.ev.getQuestions().get(0).getQuotes().get(0).getQuoteNumber()));
-			assertTrue(bet.getRegistered().getUserName().equals("user3"));
+			assertTrue(bet.getRegistered().getUserName().equals("user50"));
+			
 		} catch (BetOnSameQuote e) {
 			// if the program goes to this point OK  
 			fail();
@@ -261,19 +352,18 @@ public class AddBetDAWTest {
 			//Remove the created objects in the database (cascade removing)   
 			testDA.open();
 			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName("user3");
-			testDA.removeUserWithName("user2");
+			boolean b2=testDA.removeUserWithName("user50");
 			testDA.close();
 			System.out.println("Finally "+b+" "+b2);          
 		}
 	}
-
+	
 	@Test
-	public void test5() {
+	public void testMuga2() {
 		try {
 
 			//define paramaters
-			String eventText="event1";
+			String eventText="A vs B";
 			String queryText="query1";
 			Float betMinimum=new Float(2);
 
@@ -284,7 +374,7 @@ public class AddBetDAWTest {
 			Date oneDate=null;
 			Date userDate=null;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("09/10/2023");
 				userDate = sdf.parse("06/11/2002");
 
 			} catch (ParseException e) {
@@ -295,23 +385,23 @@ public class AddBetDAWTest {
 			//configure the state of the system (create object in the dabatase)
 			testDA.open();
 			this.ev = testDA.addEventWithQuestionWithQuoteWithUser(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, "user4", userDate);
+					, 2, "user49", userDate);
 
 			testDA.close();
 
 			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
-			Vector<Registered> alreadyBet = new Vector<>();
-
 
 			//invoke System Under Test (sut)  
-
-			Bet bet = sut.addBet(10.0, this.ev, new HashSet<Quote>(), "user4", alreadyBet);
+			Vector<Registered> alreadyBet = new Vector<>();
+			alreadyBet.add(new Registered("fol1", "123", "", "", userDate, "", "", 50));
+			Bet bet = sut.addBet(49, this.ev, quotes, "user49", alreadyBet);
 
 
 			//check results
-			assertTrue(bet.getValue()==10.0);
-			assertTrue(bet.getQuotes().size()==0);
-			assertTrue(bet.getRegistered().getUserName().equals("user4"));
+			assertTrue(bet.getValue()==49.0);
+			assertTrue(bet.getQuotes().get(0).getQuoteNumber().equals(this.ev.getQuestions().get(0).getQuotes().get(0).getQuoteNumber()));
+			assertTrue(bet.getRegistered().getUserName().equals("user49"));
+			
 		} catch (BetOnSameQuote e) {
 			// if the program goes to this point OK  
 			fail();
@@ -321,19 +411,18 @@ public class AddBetDAWTest {
 			//Remove the created objects in the database (cascade removing)   
 			testDA.open();
 			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName("user4");
-			testDA.removeUserWithName("user2");
+			boolean b2=testDA.removeUserWithName("user49");
 			testDA.close();
 			System.out.println("Finally "+b+" "+b2);          
 		}
 	}
-
+	
 	@Test
-	public void test6() {
+	public void testMuga3() {
 		try {
 
 			//define paramaters
-			String eventText="event1";
+			String eventText="A vs B";
 			String queryText="query1";
 			Float betMinimum=new Float(2);
 
@@ -344,7 +433,7 @@ public class AddBetDAWTest {
 			Date oneDate=null;
 			Date userDate=null;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("09/10/2023");
 				userDate = sdf.parse("06/11/2002");
 
 			} catch (ParseException e) {
@@ -355,156 +444,35 @@ public class AddBetDAWTest {
 			//configure the state of the system (create object in the dabatase)
 			testDA.open();
 			this.ev = testDA.addEventWithQuestionWithQuoteWithUser(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, "user5", userDate);
+					, 2, "user51", userDate);
 
 			testDA.close();
 
 			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
-			Vector<Registered> alreadyBet = new Vector<>();
-
 
 			//invoke System Under Test (sut)  
+			Vector<Registered> alreadyBet = new Vector<>();
+			
+			Bet bet = sut.addBet(51, this.ev, quotes, "user51", alreadyBet);
 
-			Bet bet = sut.addBet(10.0, this.ev, quotes, "user5", alreadyBet);
 
-
-			//check results
-			assertTrue(bet.getValue()==10.0);
-			assertTrue(bet.getQuotes().get(0).getQuoteNumber().equals(this.ev.getQuestions().get(0).getQuotes().get(0).getQuoteNumber()));
-			assertTrue(bet.getRegistered().getUserName().equals("user5"));
+			// if the program goes to this point fail 
+			fail();
+			
 		} catch (BetOnSameQuote e) {
 			// if the program goes to this point OK  
 			fail();
 		} catch (NotEnoughMoney e) {
-			fail();
+			assertTrue(true);
 		} finally {
 			//Remove the created objects in the database (cascade removing)   
 			testDA.open();
 			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName("user5");
-			testDA.removeUserWithName("user2");
+			boolean b2=testDA.removeUserWithName("user51");
 			testDA.close();
 			System.out.println("Finally "+b+" "+b2);          
 		}
 	}
-
-	@Test
-	public void test7() {
-		try {
-
-			//define paramaters
-			String eventText="event1";
-			String queryText="query1";
-			Float betMinimum=new Float(2);
-
-			Set<Quote> quotes = new HashSet<>();
-
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("05/10/2022");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			this.ev = testDA.addEventWithQuestionWithQuoteWithUserWithFollowers(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, "user6", userDate, "user7");
-
-			testDA.close();
-
-			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
-			Vector<Registered> alreadyBet = new Vector<>();
-
-
-			//invoke System Under Test (sut)  
-
-			Bet bet = sut.addBet(10.0, this.ev, new HashSet<Quote>(), "user6", alreadyBet);
-
-
-			//check results
-			assertTrue(bet.getValue()==10.0);
-			assertTrue(bet.getQuotes().size()==0);
-			assertTrue(bet.getRegistered().getUserName().equals("user6"));
-		} catch (BetOnSameQuote e) {
-			// if the program goes to this point OK  
-			fail();
-		} catch (NotEnoughMoney e) {
-			fail();
-		} finally {
-			//Remove the created objects in the database (cascade removing)   
-			testDA.open();
-			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName("user6");
-			testDA.removeUserWithName("user7");
-			testDA.close();
-			System.out.println("Finally "+b+" "+b2);          
-		}
-	}
-
-	@Test
-	public void test8() {
-		try {
-
-			//define paramaters
-			String eventText="event1";
-			String queryText="query1";
-			Float betMinimum=new Float(2);
-
-			Set<Quote> quotes = new HashSet<>();
-
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("05/10/2022");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			this.ev = testDA.addEventWithQuestionWithQuoteWithUserWithFollowers(eventText,oneDate,queryText, betMinimum, "kuota1"
-					, 2, "user8", userDate, "user9");
-
-			testDA.close();
-
-			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
-			Vector<Registered> alreadyBet = new Vector<>();
-			alreadyBet.add(new Registered("user9", "123", "", "", userDate, "", "", 50));
-
-			//invoke System Under Test (sut)  
-
-			Bet bet = sut.addBet(10.0, this.ev, quotes, "user8", alreadyBet);
-
-
-			//check results
-			assertTrue(bet.getValue()==10.0);
-			assertTrue(bet.getQuotes().get(0).getQuoteNumber().equals(this.ev.getQuestions().get(0).getQuotes().get(0).getQuoteNumber()));
-			assertTrue(bet.getRegistered().getUserName().equals("user8"));
-		} catch (BetOnSameQuote e) {
-			// if the program goes to this point OK  
-			fail();
-		} catch (NotEnoughMoney e) {
-			fail();
-		} finally {
-			//Remove the created objects in the database (cascade removing)   
-			testDA.open();
-			boolean b=testDA.removeEvent(ev);
-			boolean b2=testDA.removeUserWithName("user8");
-			testDA.removeUserWithName("user9");
-			testDA.close();
-			System.out.println("Finally "+b+" "+b2);          
-		}
-	}
+	
 }
+

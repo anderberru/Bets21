@@ -18,7 +18,7 @@ import exceptions.AlreadyFollowing;
 import exceptions.UserDoesNotExist;
 import junit.framework.Assert;
 
-public class FollowDAB {
+public class FollowDABTest {
 
 	//sut:system under test
 	static DataAccess sut=new DataAccess();
