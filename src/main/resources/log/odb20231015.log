@@ -730,3 +730,178 @@ Type domain.Registered is not enhanced.
 [2023-10-15 16:49:19 #11 type] 
 Type domain.Movement is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-15 18:41:08 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 470-494)
+
+[2023-10-15 18:41:09 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 20424@LAPTOP-KMC7QC4S
+
+[2023-10-15 18:41:09 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-15 18:41:09 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-15 18:41:09 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-15 18:41:09 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-15 18:41:09 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-15 18:41:09 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-15 18:41:09 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-15 18:41:09 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-15 18:41:09 #11 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-15 19:18:46 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 495-612)
+
+[2023-10-15 19:18:46 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 20528@LAPTOP-KMC7QC4S
+
+[2023-10-15 19:18:46 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-15 19:18:46 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-15 19:18:46 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-15 19:18:46 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-15 19:18:46 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-15 19:18:46 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-15 19:18:46 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-15 19:18:46 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-15 19:18:46 #11 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-15 19:54:13 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 613-654)
+
+[2023-10-15 19:54:13 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 19012@LAPTOP-KMC7QC4S
+
+[2023-10-15 19:54:14 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-15 19:54:14 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-15 19:54:14 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-15 19:54:14 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-15 19:54:14 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-15 19:54:14 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-15 19:54:14 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-15 19:54:14 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-15 19:54:14 #11 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-15 19:56:02 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 655-778)
+
+[2023-10-15 19:56:02 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 22792@LAPTOP-KMC7QC4S
+
+[2023-10-15 19:56:02 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-15 19:56:02 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-15 19:56:02 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-15 19:56:02 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-15 19:56:02 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-15 19:56:02 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-15 19:56:02 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-15 19:56:02 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-15 19:56:02 #11 type] 
+Type domain.Movement is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2023-10-15 19:57:22 #1 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' has been recovered (tr. 779-820)
+
+[2023-10-15 19:57:22 #2 store] 
+Database 'C:\Users\ander\git\Bets21\src\main\resources\bets.temp' is opened by 1668@LAPTOP-KMC7QC4S
+
+[2023-10-15 19:57:23 #3 type] 
+Type domain.User is not enhanced.
+
+[2023-10-15 19:57:23 #4 type] 
+Type domain.Admin is not enhanced.
+
+[2023-10-15 19:57:23 #5 type] 
+Type domain.Message is not enhanced.
+
+[2023-10-15 19:57:23 #6 type] 
+Type domain.Question is not enhanced.
+
+[2023-10-15 19:57:23 #7 type] 
+Type domain.Quote is not enhanced.
+
+[2023-10-15 19:57:23 #8 type] 
+Type domain.Event is not enhanced.
+
+[2023-10-15 19:57:23 #9 type] 
+Type domain.Bet is not enhanced.
+
+[2023-10-15 19:57:23 #10 type] 
+Type domain.Registered is not enhanced.
+
+[2023-10-15 19:57:23 #11 type] 
+Type domain.Movement is not enhanced.
+

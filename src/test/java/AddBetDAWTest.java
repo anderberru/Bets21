@@ -81,7 +81,7 @@ public class AddBetDAWTest {
 
 
 			//if the program continues fail
-			//fail();
+			fail();
 		} catch (BetOnSameQuote e) {
 			// if the program goes to this point OK  
 			assertTrue(true);
@@ -503,6 +503,67 @@ public class AddBetDAWTest {
 			boolean b=testDA.removeEvent(ev);
 			boolean b2=testDA.removeUserWithName("user8");
 			testDA.removeUserWithName("user9");
+			testDA.close();
+			System.out.println("Finally "+b+" "+b2);          
+		}
+	}
+	
+	@Test
+	public void test9() {
+		try {
+
+			//define paramaters
+			String eventText="event1";
+			String queryText="query1";
+			Float betMinimum=new Float(2);
+
+			Set<Quote> quotes = new HashSet<>();
+
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;
+			Date userDate=null;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+				userDate = sdf.parse("06/11/2002");
+
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			this.ev = testDA.addEventWithQuestionWithQuoteWithUserWithFollowers(eventText,oneDate,queryText, betMinimum, "kuota1"
+					, 2, "user11", userDate, "user12");
+
+			testDA.close();
+
+			quotes.addAll(this.ev.getQuestions().get(0).getQuotes());
+			Vector<Registered> alreadyBet = new Vector<>();
+			
+			alreadyBet.add(new Registered("user13", "123", "", "", userDate, "", "", 50));
+
+			//invoke System Under Test (sut)  
+
+			Bet bet = sut.addBet(10.0, this.ev, quotes, "user11", alreadyBet);
+
+
+			//check results
+			assertTrue(bet.getValue()==10.0);
+			assertTrue(bet.getQuotes().get(0).getQuoteNumber().equals(this.ev.getQuestions().get(0).getQuotes().get(0).getQuoteNumber()));
+			assertTrue(bet.getRegistered().getUserName().equals("user11"));
+		} catch (BetOnSameQuote e) {
+			// if the program goes to this point OK  
+			fail();
+		} catch (NotEnoughMoney e) {
+			fail();
+		} finally {
+			//Remove the created objects in the database (cascade removing)   
+			testDA.open();
+			boolean b=testDA.removeEvent(ev);
+			boolean b2=testDA.removeUserWithName("user11");
+			testDA.removeUserWithName("user12");
 			testDA.close();
 			System.out.println("Finally "+b+" "+b2);          
 		}
