@@ -327,7 +327,7 @@ public void open(boolean initializeMode){
 
 	public boolean isLogin(String log, String pass) {
 		User user =db.find(User.class, log);
-		return user != null && user.isCorrectPassword(pass);
+		return (user != null && user.isCorrectPassword(pass));
 	}
 	
 	public boolean isAdmin(String log, String pass) {
