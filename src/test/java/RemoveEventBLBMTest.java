@@ -65,11 +65,11 @@ public class RemoveEventBLBMTest {
 		try {
 
 
-			sut.removeEvent(mockedEvent);
+			sut.removeEvent(null);
 			
 			ArgumentCaptor<Event> eventCaptor = ArgumentCaptor.forClass(Event.class);
 			
-			Mockito.verify(dataAccess,Mockito.times(1)).removeEvent(null);
+			Mockito.verify(dataAccess,Mockito.times(1)).removeEvent(eventCaptor.capture());
 		} catch (Exception e) {
 			assertTrue(true);}
 	} 
