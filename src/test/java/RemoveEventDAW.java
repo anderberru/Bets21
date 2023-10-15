@@ -26,7 +26,7 @@ import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 import test.dataAccess.TestDataAccess;
 
-public class RemoveEventDAWTest {
+public class RemoveEventDAW {
 
 	 //sut:system under test
 	 static DataAccess sut=new DataAccess();

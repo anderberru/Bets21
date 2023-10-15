@@ -14,7 +14,7 @@ import exceptions.AlreadyFollower;
 import exceptions.AlreadyFollowing;
 import test.dataAccess.TestDataAccess;
 
-public class FollowDAWTest {
+public class FollowDAW {
 
 	//sut:system under test
 	static DataAccess sut=new DataAccess();

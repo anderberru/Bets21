@@ -24,7 +24,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CreateQuestionBLBMTest {
+public class CreateQuestionBLBM {
      DataAccess dataAccess=Mockito.mock(DataAccess.class);
      Event mockedEvent=Mockito.mock(Event.class);
 	

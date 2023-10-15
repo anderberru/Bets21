@@ -20,7 +20,7 @@ import exceptions.AlreadyFollowing;
 import exceptions.UserDoesNotExist;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FollowBLBMTest {
+public class FollowBLBM {
 
 	DataAccess dataAccess=Mockito.mock(DataAccess.class);
 	

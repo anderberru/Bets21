@@ -26,7 +26,7 @@ import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 import test.dataAccess.TestDataAccess;
 
-public class AddBetDABTest {
+public class AddBetDAB {
 
 	 //sut:system under test
 	 static DataAccess sut=new DataAccess();
