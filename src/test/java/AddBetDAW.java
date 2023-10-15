@@ -29,7 +29,7 @@ import exceptions.QuoteAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 import test.dataAccess.TestDataAccess;
 
-public class AddBetDAWTest {
+public class AddBetDAW {
 
 	//sut:system under test
 	static DataAccess sut=new DataAccess();

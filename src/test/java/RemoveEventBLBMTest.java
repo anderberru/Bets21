@@ -43,9 +43,7 @@ public class RemoveEventBLBMTest {
 	@InjectMocks
 	BLFacade sut=new BLFacadeImplementation(dataAccess);
 
-	//sut.createQuestion:  The event has one question with a queryText. 
-
-
+	
 	@Test
 	public void test1() {
 		try {
