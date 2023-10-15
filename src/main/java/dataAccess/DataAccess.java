@@ -40,7 +40,8 @@ public class DataAccess  {
 	protected static EntityManager  db;
 	protected static EntityManagerFactory emf;
 
-
+	String s1 = "¿Quién ganará el partido?";
+	
 	ConfigXML c=ConfigXML.getInstance();
 
      public DataAccess(boolean initializeMode)  {
@@ -104,12 +105,13 @@ public class DataAccess  {
 			Question q5;
 			Question q6;
 					
+			
 			if (Locale.getDefault().equals(new Locale("es"))) {
-				q1=ev1.addQuestion("¿Quién ganará el partido?",1);
+				q1=ev1.addQuestion(s1,1);
 				q2=ev1.addQuestion("¿Quién meterá el primer gol?",2);
-				q3=ev11.addQuestion("¿Quién ganará el partido?",1);
+				q3=ev11.addQuestion(s1,1);
 				q4=ev11.addQuestion("¿Cuántos goles se marcarán?",2);
-				q5=ev17.addQuestion("¿Quién ganará el partido?",1);
+				q5=ev17.addQuestion(s1,1);
 				q6=ev17.addQuestion("¿Habrá goles en la primera parte?",2);
 			}
 			else if (Locale.getDefault().equals(new Locale("en"))) {
