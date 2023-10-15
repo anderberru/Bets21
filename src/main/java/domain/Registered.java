@@ -188,11 +188,12 @@ public class Registered extends User implements Serializable {
 	public void removeBet(Bet b) {
 		for (int i=0; i<this.bets.size(); i++) {
 			Bet bet = this.bets.get(i);
-			if(bet.getBetNumber()==b.getBetNumber()) {
+			if(bet.getBetNumber().equals(b.getBetNumber())) {
 				this.bets.remove(i);
 			}
 		}
 	}
+	
 	
 	public void addFollower(Registered user) {
 		this.followers.add(user);
