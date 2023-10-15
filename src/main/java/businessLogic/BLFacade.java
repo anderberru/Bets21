@@ -54,7 +54,7 @@ public interface BLFacade  {
 		 * @throws EventFinished if current data is after data of the event
 		 * @throws QuoteAlreadyExist if the same quote already exists for the question
 		 */
-	   	@WebMethod public Quote createQuote(String bet_description, double value, Event event, Question question, Date date) throws  QuoteAlreadyExist, EventFinished;
+	   	@WebMethod public Quote createQuote(String betDescription, double value, Event event, Question question, Date date) throws  QuoteAlreadyExist, EventFinished;
 	   
 	/**
 	 * This method retrieves the events of a given date 
