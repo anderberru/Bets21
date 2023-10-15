@@ -30,6 +30,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	DataAccess dbManager;
 	static final String INIT = "initialize";
 	
+	public static final String ERROR_EVENT_HAS_FINISHED = ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished");
+
+	
 	public BLFacadeImplementation()  {		
 		System.out.println("Creating BLFacadeImplementation instance");
 		ConfigXML c=ConfigXML.getInstance();
@@ -78,7 +81,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		
 	    
 		if(new Date().compareTo(eventDate)>0)
-			throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
+			throw new EventFinished(ERROR_EVENT_HAS_FINISHED);
 				
 		
 		 qry=dbManager.createQuestion(event,question,betMinimum);		
@@ -107,7 +110,7 @@ public class BLFacadeImplementation  implements BLFacade {
 
 
 	   if(new Date().compareTo(eventDate)>0)
-		   throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
+		   throw new EventFinished(ERROR_EVENT_HAS_FINISHED);
 
 
 	   qry=dbManager.createEvent(description, eventDate);		
@@ -131,7 +134,7 @@ public class BLFacadeImplementation  implements BLFacade {
   	public Quote createQuote(String bet_description, double value, Event event, Question question, Date date) throws  QuoteAlreadyExist, EventFinished {
 	
    		if(new Date().compareTo(date)>0)
-				throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
+				throw new EventFinished(ERROR_EVENT_HAS_FINISHED);
    		
   			//The minimum bed must be greater than 0
   			dbManager.open(false);
@@ -309,7 +312,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		}
     	
 		if(new Date().compareTo(date)>0)
-				throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
+				throw new EventFinished(ERROR_EVENT_HAS_FINISHED);
 		
 		for(Question question: selectedQuestions) {
 			if (value < question.getBetMinimum()) {
@@ -442,7 +445,7 @@ public class BLFacadeImplementation  implements BLFacade {
 	public void duplicateEvent(Date date, Event event) throws EventFinished {
 		
 		if(new Date().compareTo(date)>0)
-			   throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
+			   throw new EventFinished(ERROR_EVENT_HAS_FINISHED);
 		
 		dbManager.open(false);
 		
