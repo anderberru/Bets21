@@ -1,4 +1,4 @@
-/*import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertEquals;
 
@@ -50,38 +50,12 @@ public class RemoveEventBLBMTest {
 	public void test1() {
 		try {
 
-			//define paramaters
-			Event ev;
-			String eventText="A vs B";
 
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("09/10/2023");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			ev = testDA.addEvent(eventText,oneDate);
-
-			testDA.close();
-
-			Mockito.doReturn("A irabazi du").when(mockedEvent).getResult();
-			//invoke System Under Test (sut)  
-
-			sut.removeEvent(ev);
-
-			if(sut.getEvents(userDate).contains(ev)) fail();
-			else assertTrue(true);
-			//if the program continues fail
-			//fail();
+			sut.removeEvent(mockedEvent);
+			
+			ArgumentCaptor<Event> eventCaptor = ArgumentCaptor.forClass(Event.class);
+			
+			Mockito.verify(dataAccess,Mockito.times(1)).removeEvent(eventCaptor.capture());
 		} catch (Exception e) {
 			fail();}
 	}
@@ -90,204 +64,39 @@ public class RemoveEventBLBMTest {
 	public void test2() {
 		try {
 
-			//define paramaters
-			Event ev;
-			String eventText="A vs B";
-			String quText="question1";
-			Float qty=new Float(2);
 
-
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("09/10/2023");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			ev = testDA.addEventWithQuestion(eventText,oneDate, quText, qty);
-
-			testDA.close();
-
-
-			//invoke System Under Test (sut)  
-
-			sut.removeEvent(ev);
-
-			if(sut.getEvents(userDate).contains(ev)) fail();
-			else assertTrue(true);
-			//if the program continues fail
-			//fail();
+			sut.removeEvent(mockedEvent);
+			
+			ArgumentCaptor<Event> eventCaptor = ArgumentCaptor.forClass(Event.class);
+			
+			Mockito.verify(dataAccess,Mockito.times(1)).removeEvent(null);
 		} catch (Exception e) {
-			fail();}
+			assertTrue(true);}
 	}
 	
 	@Test
 	public void test3() {
 		try {
-
-			//define paramaters
-			Event ev;
-			String eventText="A vs B";
-			String quText="question1";
-			Float qty=new Float(2);
-			Quote q1 = new Quote("quote1", 5);
-
-
+			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate=null;
-			Date userDate=null;
+			
 			try {
 				oneDate = sdf.parse("09/10/2023");
-				userDate = sdf.parse("06/11/2002");
-
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			ev = testDA.addEventWithQuestionWithQuote(eventText,oneDate, quText, qty, q1);
-
-			testDA.close();
-
-
-			//invoke System Under Test (sut)  
+			Event ev = new Event("d1", oneDate);
 
 			sut.removeEvent(ev);
-
-			if(sut.getEvents(userDate).contains(ev)) fail();
-			else assertTrue(true);
-			//if the program continues fail
-			//fail();
-		} catch (Exception e) {
-			fail();}
-	}
-	
-	@Test
-	public void test4() {
-		try {
-
-			//define paramaters
-			Event ev;
-			String eventText="A vs B";
-			String quText="question1";
-			String user = "Damian";
-			Float qty=new Float(2);
-			Quote q1 = new Quote("quote1", 5);
-
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("09/10/2023");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			ev = testDA.addEventWithQuestionWithQuoteWithUserWithBet(eventText, userDate, quText, qty, "quote1", 5, user, 5, oneDate);
-
-			testDA.close();
-
-
-			//invoke System Under Test (sut)  
-
-			sut.removeEvent(ev);
-
-			if(sut.getEvents(userDate).contains(ev)) fail();
-			else assertTrue(true);
-			//if the program continues fail
-			//fail();
-		} catch (Exception e) {
-			fail();}
-	}
-	
-	@Test
-	public void test5() {
-		try {
-
-			//define paramaters
-			Event ev;
-			String eventText="A vs B";
-
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("09/10/2023");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			this.ev = testDA.addEvent(eventText,oneDate);
-			testDA.close();
-
-
-			//invoke System Under Test (sut)  
-
-			sut.removeEvent(null);
-
-			fail();
-		} catch (Exception e) {
-			assertTrue(true);}
-		finally {
-			testDA.removeEvent(ev);
-		}
-	}
-	
-	@Test
-	public void test6() {
-		try {
-
-			//define paramaters
-			Event ev;
-			String eventText="A vs B";
-
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;
-			Date userDate=null;
-			try {
-				oneDate = sdf.parse("09/10/2023");
-				userDate = sdf.parse("06/11/2002");
-
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-
-			//configure the state of the system (create object in the dabatase)
-			ev = new Event(eventText, oneDate);
-
-			//invoke System Under Test (sut)  
-
-			sut.removeEvent(ev);
-
-			fail();
+			
+			ArgumentCaptor<Event> eventCaptor = ArgumentCaptor.forClass(Event.class);
+			
+			Mockito.verify(dataAccess,Mockito.times(1)).removeEvent(eventCaptor.capture());
 		} catch (Exception e) {
 			assertTrue(true);}
 	}
+	
 	
 }
-
-*/
