@@ -226,7 +226,8 @@ public class BLFacadeImplementation  implements BLFacade {
     		dbManager.open(false);
     		boolean exists = dbManager.doesExistRegistered(user);
     		if (!exists) {
-    			dbManager.register(user, pswd, name, dni, pay, userDate, email, money);
+    			Registered register = new Registered(user, pswd, name, dni, userDate, pay, email, money);
+    			dbManager.register(register);
     		}
     		dbManager.close();
     		if (exists) {

@@ -38,8 +38,8 @@ public class FollowBLBM {
 			e.printStackTrace();
 		}
 		
-		dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		dataAccess.register(new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0));
+		dataAccess.register(new Registered("Pepe", "1234", "Pepe", "1234", date, "cash", "mail", 0));
 		
 		
 		try {
@@ -77,7 +77,7 @@ public class FollowBLBM {
 			e.printStackTrace();
 		}
 		
-		dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		dataAccess.register(new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0));
 		//dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		
 		
@@ -112,7 +112,7 @@ public class FollowBLBM {
 		}
 		
 		//dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		dataAccess.register(new Registered("Pepe", "1234", "Pepe", "1234", date, "cash", "mail", 0));
 		
 		
 		try {
@@ -142,8 +142,8 @@ public class FollowBLBM {
 			e.printStackTrace();
 		}
 		
-		dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		dataAccess.register(new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0));
+		dataAccess.register(new Registered("Pepe", "1234", "Pepe", "1234", date, "cash", "mail", 0));
 		
 		
 		try {
@@ -173,7 +173,7 @@ public class FollowBLBM {
 			e.printStackTrace();
 		}
 		
-		dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		dataAccess.register(new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0));
 		//dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
 		
 		
@@ -204,8 +204,8 @@ public class FollowBLBM {
 			e.printStackTrace();
 		}
 		
-		dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		dataAccess.register(new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0));
+		dataAccess.register(new Registered("Pepe", "1234", "Pepe", "1234", date, "cash", "mail", 0));
 		
 		
 		try {
@@ -236,8 +236,8 @@ public class FollowBLBM {
 			e.printStackTrace();
 		}
 		
-		dataAccess.register("Paco", "1234", "Pepe", "1234", "cash", date, "mail", 0);
-		dataAccess.register("Pepe", "1234", "Pepe", "1234", "cash", date, "mail", 0);
+		dataAccess.register(new Registered("Paco", "1234", "Pepe", "1234", date, "cash", "mail", 0));
+		dataAccess.register(new Registered("Pepe", "1234", "Pepe", "1234", date, "cash", "mail", 0));
 		
 		
 		try {

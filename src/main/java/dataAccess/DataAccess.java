@@ -349,14 +349,12 @@ public void open(boolean initializeMode){
 		}
 	}
 	
-	public boolean register(String username, String pass, String fullname, String DNI, String payMethod, Date date, String email, int money) {
+	public boolean register(User register) {
 		try {
-			User register;
 			db.getTransaction().begin();
 			
-			register = new Registered(username, pass, fullname, DNI, date, payMethod, email, money);
-			
 			db.persist(register);
+			
 			db.getTransaction().commit();
 			System.out.println("Gordeta " + register.getUserName());
 			return true;
