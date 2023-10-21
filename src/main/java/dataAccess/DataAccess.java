@@ -40,7 +40,7 @@ public class DataAccess  {
 	protected static EntityManager  db;
 	protected static EntityManagerFactory emf;
 
-	String s1 = "¿Quién ganará el partido?";
+	String s1 = "ï¿½Quiï¿½n ganarï¿½ el partido?";
 	
 	ConfigXML c=ConfigXML.getInstance();
 
@@ -74,27 +74,27 @@ public class DataAccess  {
 		   int year=today.get(Calendar.YEAR);
 		   if (month==12) { month=0; year+=1;}  
 	    
-			Event ev1=new Event(1, "Atlético-Athletic", UtilDate.newDate(year,month,17));
+			Event ev1=new Event(1, "Atlï¿½tico-Athletic", UtilDate.newDate(year,month,17));
 			Event ev2=new Event(2, "Eibar-Barcelona", UtilDate.newDate(year,month,17));
 			Event ev3=new Event(3, "Getafe-Celta", UtilDate.newDate(year,month,17));
-			Event ev4=new Event(4, "Alavés-Deportivo", UtilDate.newDate(year,month,17));
-			Event ev5=new Event(5, "Español-Villareal", UtilDate.newDate(year,month,17));
+			Event ev4=new Event(4, "Alavï¿½s-Deportivo", UtilDate.newDate(year,month,17));
+			Event ev5=new Event(5, "Espaï¿½ol-Villareal", UtilDate.newDate(year,month,17));
 			Event ev6=new Event(6, "Las Palmas-Sevilla", UtilDate.newDate(year,month,17));
 			Event ev7=new Event(7, "Malaga-Valencia", UtilDate.newDate(year,month,17));
-			Event ev8=new Event(8, "Girona-Leganés", UtilDate.newDate(year,month,17));
+			Event ev8=new Event(8, "Girona-Leganï¿½s", UtilDate.newDate(year,month,17));
 			Event ev9=new Event(9, "Real Sociedad-Levante", UtilDate.newDate(year,month,17));
 			Event ev10=new Event(10, "Betis-Real Madrid", UtilDate.newDate(year,month,17));
 
 			Event ev11=new Event(11, "Atletico-Athletic", UtilDate.newDate(year,month,1));
 			Event ev12=new Event(12, "Eibar-Barcelona", UtilDate.newDate(year,month,1));
 			Event ev13=new Event(13, "Getafe-Celta", UtilDate.newDate(year,month,1));
-			Event ev14=new Event(14, "Alavés-Deportivo", UtilDate.newDate(year,month,1));
-			Event ev15=new Event(15, "Español-Villareal", UtilDate.newDate(year,month,1));
+			Event ev14=new Event(14, "Alavï¿½s-Deportivo", UtilDate.newDate(year,month,1));
+			Event ev15=new Event(15, "Espaï¿½ol-Villareal", UtilDate.newDate(year,month,1));
 			Event ev16=new Event(16, "Las Palmas-Sevilla", UtilDate.newDate(year,month,1));
 			
 
-			Event ev17=new Event(17, "Málaga-Valencia", UtilDate.newDate(year,month+1,28));
-			Event ev18=new Event(18, "Girona-Leganés", UtilDate.newDate(year,month+1,28));
+			Event ev17=new Event(17, "Mï¿½laga-Valencia", UtilDate.newDate(year,month+1,28));
+			Event ev18=new Event(18, "Girona-Leganï¿½s", UtilDate.newDate(year,month+1,28));
 			Event ev19=new Event(19, "Real Sociedad-Levante", UtilDate.newDate(year,month+1,28));
 			Event ev20=new Event(20, "Betis-Real Madrid", UtilDate.newDate(year,month+1,28));
 			
@@ -108,11 +108,11 @@ public class DataAccess  {
 			
 			if (Locale.getDefault().equals(new Locale("es"))) {
 				q1=ev1.addQuestion(s1,1);
-				q2=ev1.addQuestion("¿Quién meterá el primer gol?",2);
+				q2=ev1.addQuestion("ï¿½Quiï¿½n meterï¿½ el primer gol?",2);
 				q3=ev11.addQuestion(s1,1);
-				q4=ev11.addQuestion("¿Cuántos goles se marcarán?",2);
+				q4=ev11.addQuestion("ï¿½Cuï¿½ntos goles se marcarï¿½n?",2);
 				q5=ev17.addQuestion(s1,1);
-				q6=ev17.addQuestion("¿Habrá goles en la primera parte?",2);
+				q6=ev17.addQuestion("ï¿½Habrï¿½ goles en la primera parte?",2);
 			}
 			else if (Locale.getDefault().equals(new Locale("en"))) {
 				q1=ev1.addQuestion("Who will win the match?",1);
@@ -423,53 +423,57 @@ public void open(boolean initializeMode){
 		Vector<Quote> quotes = new Vector<Quote>();
 		quotes.addAll(selectedQuotes);
 		
-		Vector<Quote> foundQuotes = new Vector<Quote>();
-		
-		
-		
 		if (user.betOnSameQuote(quotes)) throw new BetOnSameQuote();
-		
-		
 		
 		double newMoney = user.getMoney() - value;
 		if (newMoney < 0 && alreadyBet.size()==1) {
 			throw new NotEnoughMoney();
 		} else if (newMoney>=0) {
 		
-			db.getTransaction().begin();
-			
-			for (Quote quo : quotes) {
-				Quote quote = db.find(Quote.class, quo.getQuoteNumber());
-				foundQuotes.add(quote);
-				quoNums+=quote.getQuoteNumber()+", ";
-			}
-			
-			bet = user.addBet(value, foundQuotes); //apostua erabiltzailean sartu
-			
-			user.setMoney(newMoney);
-			
-			for(Quote quo: quotes) { //apostua kuotetan sartu
-				Quote quote = db.find(Quote.class, quo.getQuoteNumber());
-				quote.addBet(bet);
-			}
-			
-			
-			user.addMovement(value, "Bet: -"+value+" on quotes: "+quoNums);
-		
-			db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
-							// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-			db.persist(user);
-			
-			db.getTransaction().commit();
-			
-			Vector<Registered> followers = user.getFollowers();
-			
-			for(Registered fol: followers) {
-				if(!alreadyBet.contains(fol)) {
-					addBet(value, event, selectedQuotes, fol.getUserName(), alreadyBet);
-				}
+			bet = extractedAddBet(value, quoNums, ev, user, quotes, new Vector<Quote>(), newMoney);
+						
+			followersTratatu(value, event, selectedQuotes, alreadyBet, user.getFollowers());
+		}
+		return bet;
+	}
+
+	private void followersTratatu(double value, Event event, Set<Quote> selectedQuotes, Vector<Registered> alreadyBet,
+			Vector<Registered> followers) throws BetOnSameQuote, NotEnoughMoney {
+		for(Registered fol: followers) {
+			if(!alreadyBet.contains(fol)) {
+				addBet(value, event, selectedQuotes, fol.getUserName(), alreadyBet);
 			}
 		}
+	}
+
+	private Bet extractedAddBet(double value, String quoNums, Event ev, Registered user, Vector<Quote> quotes,
+			Vector<Quote> foundQuotes, double newMoney) {
+		Bet bet;
+		db.getTransaction().begin();
+		
+		for (Quote quo : quotes) {
+			Quote quote = db.find(Quote.class, quo.getQuoteNumber());
+			foundQuotes.add(quote);
+			quoNums+=quote.getQuoteNumber()+", ";
+		}
+		
+		bet = user.addBet(value, foundQuotes); //apostua erabiltzailean sartu
+		
+		user.setMoney(newMoney);
+		
+		for(Quote quo: quotes) { //apostua kuotetan sartu
+			Quote quote = db.find(Quote.class, quo.getQuoteNumber());
+			quote.addBet(bet);
+		}
+		
+		
+		user.addMovement(value, "Bet: -"+value+" on quotes: "+quoNums);
+
+		db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
+						// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+		db.persist(user);
+		
+		db.getTransaction().commit();
 		return bet;
 	}
 	
