@@ -41,7 +41,7 @@ public class DataAccess  {
 	protected static EntityManagerFactory emf;
 
 	String s1 = "�Qui�n ganar� el partido?";
-	
+	String etiketa = "Etiquetas";
 	ConfigXML c=ConfigXML.getInstance();
 
      public DataAccess(boolean initializeMode)  {
@@ -185,7 +185,7 @@ public class DataAccess  {
 		
 			Event ev = db.find(Event.class, event.getEventNumber());
 			
-			if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("QueryAlreadyExist"));
+			if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle(etiketa).getString("QueryAlreadyExist"));
 			
 			db.getTransaction().begin();
 			Question q = ev.addQuestion(question, betMinimum);
@@ -211,7 +211,7 @@ public class DataAccess  {
 		Event ev = new Event(description, eventDate);
 		Vector<Event> events = this.getEvents(eventDate);
 		
-		if (events.contains(new Event(description, eventDate))) throw new EventAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventAlreadyExist"));
+		if (events.contains(new Event(description, eventDate))) throw new EventAlreadyExist(ResourceBundle.getBundle(etiketa).getString("ErrorEventAlreadyExist"));
 		
 		db.getTransaction().begin();
 		
@@ -235,7 +235,7 @@ public class DataAccess  {
 			Question ques = db.find(Question.class, question.getQuestionNumber());
 			
 			
-			if (ques.DoesQuoteExists(bet_description, value)) throw new QuoteAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQuoteAlreadyExist"));
+			if (ques.DoesQuoteExists(bet_description, value)) throw new QuoteAlreadyExist(ResourceBundle.getBundle(etiketa).getString("ErrorQuoteAlreadyExist"));
 			
 			db.getTransaction().begin();
 						
