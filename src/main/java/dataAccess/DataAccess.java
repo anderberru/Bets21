@@ -41,6 +41,7 @@ public class DataAccess  {
 	protected static EntityManagerFactory emf;
 
 	String s1 = "�Qui�n ganar� el partido?";
+	String s2 = "Zeinek irabaziko du partidua?";
 	String etiketa = "Etiquetas";
 	ConfigXML c=ConfigXML.getInstance();
 
@@ -123,11 +124,11 @@ public class DataAccess  {
 				q6=ev17.addQuestion("Will there be goals in the first half?",2);
 			}			
 			else {
-				q1=ev1.addQuestion("Zeinek irabaziko du partidua?",1);
+				q1=ev1.addQuestion(s2 ,1);
 				q2=ev1.addQuestion("Zeinek sartuko du lehenengo gola?",2);
-				q3=ev11.addQuestion("Zeinek irabaziko du partidua?",1);
+				q3=ev11.addQuestion(s2,1);
 				q4=ev11.addQuestion("Zenbat gol sartuko dira?",2);
-				q5=ev17.addQuestion("Zeinek irabaziko du partidua?",1);
+				q5=ev17.addQuestion(s2,1);
 				q6=ev17.addQuestion("Golak sartuko dira lehenengo zatian?",2);
 				
 			}
