@@ -446,9 +446,9 @@ public void open(boolean initializeMode){
 		}
 	}
 
-	private Bet extractedAddBet(double value, Event ev, Registered user, Vector<Quote> foundQuotes) {
+	private Bet extractedAddBet(double value, Event ev, Registered user, Vector<Quote> quotes) {
 		Bet bet;
-		Vector<Quote> quotes = new Vector<Quote>();
+		Vector<Quote> foundQuotes = new Vector<Quote>();
 		double newMoney;
 		String quoNums="";
 		
