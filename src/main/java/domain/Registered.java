@@ -219,13 +219,18 @@ public class Registered extends User implements Serializable {
 		return sum;
 	}
 	
-	public double getSuccessRate() {
-		double suc = 0;
-		double los = 0;
+	public int getFailureAmount() {
+		int sum = 0;
 		for (Movement m: movements) {
-			if (m.getDescription().contains("Won bet")) suc++;
-			else if (m.getDescription().contains("Lost bet")) los++;
+			if (m.getDescription().contains("Lost bet")) sum++;
 		}
+		return sum;
+	}
+	
+	public double getSuccessRate() {
+		double suc = getSuccessRate();
+		double los = getFailureAmount();
+	
 		if (suc + los == 0.0) return 0;
 		else return Math.round((suc/(suc+los))*1000)/1000.0;
 	}
