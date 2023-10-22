@@ -511,59 +511,64 @@ public void open(boolean initializeMode){
 		db.getTransaction().commit();
 	}
 	
-	public void putResults(Event evi, String eventResult, Set<Quote> selectedQuotes) throws EventAlreadyRemoved, EventResultsAlreadyIn {
-		Event ev=db.find(Event.class, evi.getEventNumber());
-		
-		if (ev == null) {
-			throw new EventAlreadyRemoved();
-		} else if (ev.getResult() != null) {
-			throw new EventResultsAlreadyIn();
-		}
-		
-		db.getTransaction().begin();
-		
-		ev.setResult(eventResult);
-		
-		Vector<Quote> selected = new Vector<Quote>();
-		selected.addAll(selectedQuotes);
-		
-		Vector<Question> questions = ev.getQuestions();
-		Vector<Quote> quotes;
-		Vector<Bet> bets;
-		
-		for (Question q : questions) {
-			
-			Question question = db.find(Question.class, q.getQuestionNumber());
-			quotes=question.getQuotes();
-			for (Quote quo : quotes) {
-				
-				Quote quote = db.find(Quote.class, quo.getQuoteNumber());
-				bets=quote.getBets();
-				for (Bet b : bets) {
-					
-					Bet bet = db.find(Bet.class, b.getBetNumber());
-					String username = bet.getRegistered().getUserName();
-					Registered user = db.find(Registered.class, username);
-					
-					if (selected.contains(quote)) {
-						double betValue = bet.getValue();
-						user.setMoney(user.getMoney() + betValue*quote.getValue() + betValue*user.getBonus());
-						user.addMovement(bet.getValue()*quote.getValue(), "Won bet: +"+bet.getValue()*quote.getValue()*user.getBonus());
-					} else {
-						user.addMovement(0, "Lost bet");
-					}
-
-					user.removeBet(bet);
-					
-					
-					db.persist(user);
-				}
-				quote.removeAllBets();
-			}
-		}
-		
-		db.getTransaction().commit();
+	
+	public void putResults(Event ev, String eventResult, Set<Quote> selectedQuotes) throws EventAlreadyRemoved, EventResultsAlreadyIn {
+	    Event existingEvent = getExistingEvent(ev);
+	    
+	    if (existingEvent.getResult() != null) {
+	        throw new EventResultsAlreadyIn();
+	    }
+	    
+	    updateEventResult(existingEvent, eventResult);
+	    processSelectedQuotes(existingEvent, selectedQuotes);
 	}
+
+	private Event getExistingEvent(Event event) throws EventAlreadyRemoved {
+	    Event existingEvent = db.find(Event.class, event.getEventNumber());
+	    
+	    if (existingEvent == null) {
+	        throw new EventAlreadyRemoved();
+	    }
+	    
+	    return existingEvent;
+	}
+	
+	private void updateEventResult(Event event, String eventResult) {
+	    db.getTransaction().begin();
+	    event.setResult(eventResult);
+	    db.getTransaction().commit();
+	}
+	
+	private void processSelectedQuotes(Event event, Set<Quote> selectedQuotes) {
+	    for (Question question : event.getQuestions()) {
+	        for (Quote quote : question.getQuotes()) {
+	            Quote existingQuote = db.find(Quote.class, quote.getQuoteNumber());
+	            for (Bet bet : existingQuote.getBets()) {
+	                processBetResult(existingQuote, bet, selectedQuotes);
+	            }
+	            existingQuote.removeAllBets();
+	        }
+	    }
+	}
+	
+	private void processBetResult(Quote quote, Bet bet, Set<Quote> selectedQuotes) {
+	    Bet existingBet = db.find(Bet.class, bet.getBetNumber());
+	    String username = existingBet.getRegistered().getUserName();
+	    Registered user = db.find(Registered.class, username);
+	    
+	    if (selectedQuotes.contains(quote)) {
+	        double betValue = existingBet.getValue();
+	        user.setMoney(user.getMoney() + betValue * quote.getValue() + betValue * user.getBonus());
+	        user.addMovement(betValue * quote.getValue(), "Won bet: +" + betValue * quote.getValue() * user.getBonus());
+	    } else {
+	        user.addMovement(0, "Lost bet");
+	    }
+	    
+	    user.removeBet(existingBet);
+	    db.persist(user);
+	}
+	
+	
 	
 	public void close(){
 		db.close();
