@@ -410,7 +410,7 @@ public void open(boolean initializeMode){
 	}
 	
 	public Bet addBet(double value, Event event, Set<Quote> selectedQuotes, String username, Vector<Registered> alreadyBet) throws BetOnSameQuote, NotEnoughMoney {
-		String quoNums="";
+		
 		Event ev = db.find(Event.class, event.getEventNumber());
 		
 		Registered user = db.find(Registered.class, username);
@@ -429,7 +429,7 @@ public void open(boolean initializeMode){
 			throw new NotEnoughMoney();
 		} else if (newMoney>=0) {
 		
-			bet = extractedAddBet(value, quoNums, ev, user, quotes, new Vector<Quote>(), newMoney);
+			bet = extractedAddBet(value, ev, user, quotes);
 						
 			followersTratatu(value, event, selectedQuotes, alreadyBet, user.getFollowers());
 		}
@@ -438,6 +438,7 @@ public void open(boolean initializeMode){
 
 	private void followersTratatu(double value, Event event, Set<Quote> selectedQuotes, Vector<Registered> alreadyBet,
 			Vector<Registered> followers) throws BetOnSameQuote, NotEnoughMoney {
+		
 		for(Registered fol: followers) {
 			if(!alreadyBet.contains(fol)) {
 				addBet(value, event, selectedQuotes, fol.getUserName(), alreadyBet);
@@ -445,9 +446,12 @@ public void open(boolean initializeMode){
 		}
 	}
 
-	private Bet extractedAddBet(double value, String quoNums, Event ev, Registered user, Vector<Quote> quotes,
-			Vector<Quote> foundQuotes, double newMoney) {
+	private Bet extractedAddBet(double value, Event ev, Registered user, Vector<Quote> foundQuotes) {
 		Bet bet;
+		Vector<Quote> quotes = new Vector<Quote>();
+		double newMoney;
+		String quoNums="";
+		
 		db.getTransaction().begin();
 		
 		for (Quote quo : quotes) {
@@ -457,7 +461,7 @@ public void open(boolean initializeMode){
 		}
 		
 		bet = user.addBet(value, foundQuotes); //apostua erabiltzailean sartu
-		
+		newMoney = user.getMoney() - value;
 		user.setMoney(newMoney);
 		
 		for(Quote quo: quotes) { //apostua kuotetan sartu
