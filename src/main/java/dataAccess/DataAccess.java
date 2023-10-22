@@ -486,6 +486,14 @@ public void open(boolean initializeMode){
 		db.getTransaction().begin();
 		
 		Vector<Question> questions = ev.getQuestions();
+		removeBetsFromUsers(questions);
+		
+		db.remove(ev);
+		
+		db.getTransaction().commit();
+	}
+
+	private void removeBetsFromUsers(Vector<Question> questions) {
 		Vector<Quote> quotes;
 		Vector<Bet> bets;
 		
@@ -510,10 +518,6 @@ public void open(boolean initializeMode){
 				}
 			}
 		}
-		
-		db.remove(ev);
-		
-		db.getTransaction().commit();
 	}
 	
 	
