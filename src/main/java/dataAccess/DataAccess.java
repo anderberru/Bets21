@@ -42,6 +42,7 @@ public class DataAccess  {
 
 	String s1 = "�Qui�n ganar� el partido?";
 	String s2 = "Zeinek irabaziko du partidua?";
+	String s3 = "Who will win the match?";
 	String etiketa = "Etiquetas";
 	ConfigXML c=ConfigXML.getInstance();
 
@@ -116,11 +117,11 @@ public class DataAccess  {
 				q6=ev17.addQuestion("�Habr� goles en la primera parte?",2);
 			}
 			else if (Locale.getDefault().equals(new Locale("en"))) {
-				q1=ev1.addQuestion("Who will win the match?",1);
+				q1=ev1.addQuestion(s3,1);
 				q2=ev1.addQuestion("Who will score first?",2);
-				q3=ev11.addQuestion("Who will win the match?",1);
+				q3=ev11.addQuestion(s3,1);
 				q4=ev11.addQuestion("How many goals will be scored in the match?",2);
-				q5=ev17.addQuestion("Who will win the match?",1);
+				q5=ev17.addQuestion(s3,1);
 				q6=ev17.addQuestion("Will there be goals in the first half?",2);
 			}			
 			else {
@@ -446,29 +447,14 @@ public void open(boolean initializeMode){
 		}
 	}
 
+	public Bet bet1;
+	
 	private Bet extractedAddBet(double value, Event ev, Registered user, Vector<Quote> quotes) {
-		Bet bet;
-		Vector<Quote> foundQuotes = new Vector<Quote>();
-		double newMoney;
 		String quoNums="";
 		
 		db.getTransaction().begin();
 		
-		for (Quote quo : quotes) {
-			Quote quote = db.find(Quote.class, quo.getQuoteNumber());
-			foundQuotes.add(quote);
-			quoNums+=quote.getQuoteNumber()+", ";
-		}
-		
-		bet = user.addBet(value, foundQuotes); //apostua erabiltzailean sartu
-		newMoney = user.getMoney() - value;
-		user.setMoney(newMoney);
-		
-		for(Quote quo: quotes) { //apostua kuotetan sartu
-			Quote quote = db.find(Quote.class, quo.getQuoteNumber());
-			quote.addBet(bet);
-		}
-		
+		quoNums = extractedAddBet2(value, user, quotes);
 		
 		user.addMovement(value, "Bet: -"+value+" on quotes: "+quoNums);
 
@@ -477,7 +463,30 @@ public void open(boolean initializeMode){
 		db.persist(user);
 		
 		db.getTransaction().commit();
-		return bet;
+		return this.bet1;
+	}
+	
+	private String extractedAddBet2(double value, Registered user, Vector<Quote> quotes) {
+		double newMoney;
+		Vector<Quote> foundQuotes = new Vector<Quote>();
+		String quoNums="";
+		
+		for (Quote quo : quotes) {
+			Quote quote = db.find(Quote.class, quo.getQuoteNumber());
+			foundQuotes.add(quote);
+			quoNums+=quote.getQuoteNumber()+", ";
+		}
+		
+		this.bet1 = user.addBet(value, foundQuotes); //apostua erabiltzailean sartu
+		newMoney = user.getMoney() - value;
+		user.setMoney(newMoney);
+		
+		for(Quote quo: quotes) { //apostua kuotetan sartu
+			Quote quote = db.find(Quote.class, quo.getQuoteNumber());
+			quote.addBet(this.bet1);
+		}
+		
+		return quoNums;
 	}
 	
 	public void removeEvent(Event event) {
@@ -505,19 +514,25 @@ public void open(boolean initializeMode){
 				
 				Quote quote = db.find(Quote.class, quo.getQuoteNumber());
 				bets=quote.getBets();
-				for (Bet b : bets) {
-					
-					Bet bet = db.find(Bet.class, b.getBetNumber());
-					String username = bet.getRegistered().getUserName();
-					Registered user = db.find(Registered.class, username);
-					user.setMoney(user.getMoney() + bet.getValue());
-					user.removeBet(bet);
-
-					user.addMovement(bet.getValue(), "Bet removed: +"+bet.getValue());
-					db.persist(user);
-				}
+				
+				removeBets(bets);
 			}
 		}
+	}
+	
+	private void removeBets(Vector<Bet> bets) {
+
+			for (Bet b : bets) {
+				
+				Bet bet = db.find(Bet.class, b.getBetNumber());
+				String username = bet.getRegistered().getUserName();
+				Registered user = db.find(Registered.class, username);
+				user.setMoney(user.getMoney() + bet.getValue());
+				user.removeBet(bet);
+
+				user.addMovement(bet.getValue(), "Bet removed: +"+bet.getValue());
+				db.persist(user);
+			}
 	}
 	
 	
