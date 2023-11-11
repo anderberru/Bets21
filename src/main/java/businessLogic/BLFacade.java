@@ -145,4 +145,6 @@ public interface BLFacade  {
 	
 	@WebMethod public void duplicateEvent(Date date, Event event) throws EventFinished;
 	
+	@WebMethod public Registered getUser(String username);
+	
 }

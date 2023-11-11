@@ -726,4 +726,8 @@ public void open(boolean initializeMode){
 		db.getTransaction().commit();
 	}
 	
+	public Registered getUser(String username) {
+		return db.find(Registered.class, username);
+	}
+	
 }

@@ -34,6 +34,8 @@ public class RegisteredGUI extends JFrame {
 
 	private JLabel lblUsernameLabel;
 	private JButton btnFollow;
+
+	private JButton btnTable;
 	
 	/**
 	 * This is the default constructor
@@ -44,6 +46,7 @@ public class RegisteredGUI extends JFrame {
 			@Override
 			public void windowActivated(WindowEvent e) {
 				lblUsernameLabel.setText(username);
+				btnTable.setText(ResourceBundle.getBundle("Etiquetas").getString("TableOF")+" "+username);
 			}
 		});
 		
@@ -65,7 +68,7 @@ public class RegisteredGUI extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(495, 391);
+		this.setSize(495, 440);
 		this.setContentPane(getJContentPane());
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("Registered"));
 	}
@@ -90,6 +93,16 @@ public class RegisteredGUI extends JFrame {
 			lblUsernameLabel.setBounds(10, 15, 135, 14);
 			jContentPane.add(lblUsernameLabel);
 			jContentPane.add(getBtnFollow());
+			
+			btnTable = new JButton(); //$NON-NLS-1$ //$NON-NLS-2$
+			btnTable.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JFrame table = new TableGUI(username);
+					table.setVisible(true);
+				}
+			});
+			btnTable.setBounds(0, 361, 479, 43);
+			jContentPane.add(btnTable);
 			
 		}
 		return jContentPane;
