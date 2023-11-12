@@ -1,9 +1,12 @@
 package gui;
 
 import businessLogic.BLFacade;
+import businessLogic.ExtendedIterator;
 import configuration.UtilDate;
 
 import com.toedter.calendar.JCalendar;
+
+import domain.Event;
 import domain.Question;
 import javax.swing.*;
 import java.awt.*;
@@ -148,19 +151,24 @@ public class FindQuestionsGUI extends JFrame {
 
 						BLFacade facade=MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events=facade.getEvents(firstDay);
+						ExtendedIterator<Event> events=facade.getEvents(firstDay);
+						
+						printDayEvents(events);
 
 						if (events.isEmpty() ) jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")+ ": "+dateformat1.format(calendarAct.getTime()));
 						else jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events")+ ": "+dateformat1.format(calendarAct.getTime()));
-						for (domain.Event ev:events){
-							Vector<Object> row = new Vector<Object>();
+						while (events.hasNext()) {
+						    Event ev = events.next();
 
-							System.out.println("Events "+ev);
+						    Vector<Object> row = new Vector<Object>();
 
-							row.add(ev.getEventNumber());
-							row.add(ev.getDescription());
-							row.add(ev); // ev object added in order to obtain it with tableModelEvents.getValueAt(i,2)
-							tableModelEvents.addRow(row);		
+
+
+						    row.add(ev.getEventNumber());
+						    row.add(ev.getDescription());
+						    row.add(ev); // Adding the ev object
+
+						    tableModelEvents.addRow(row);
 						}
 						tableEvents.getColumnModel().getColumn(0).setPreferredWidth(25);
 						tableEvents.getColumnModel().getColumn(1).setPreferredWidth(268);
@@ -171,6 +179,25 @@ public class FindQuestionsGUI extends JFrame {
 					}
 
 				}
+			}
+
+			private void printDayEvents(ExtendedIterator<Event> i) {
+				System.out.println("Atzetik aurrera inprimatzen");
+				Event ev;
+				i.goLast();
+				while (i.hasPrevious()) {
+					ev = i.previous();
+					System.out.println(ev.toString());
+				}
+				// Nahiz eta suposatu hasierara ailegatu garela, eragiketa egiten dugu.
+				System.out.println("Aurretik atzera inprimatzen");
+
+				i.goFirst();
+				while (i.hasNext()) {
+					ev = i.next();
+					System.out.println(ev.toString());
+				}
+				
 			} 
 		});
 

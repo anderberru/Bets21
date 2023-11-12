@@ -4,6 +4,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.Vector;
@@ -27,7 +29,7 @@ import exceptions.*;
  */
 @WebService(endpointInterface = "businessLogic.BLFacade")
 public class BLFacadeImplementation  implements BLFacade {
-	DataAccess dbManager;
+	DataAccess dbManager; 
 	static final String INIT = "initialize";
 
 	public static final String ERROR_EVENT_HAS_FINISHED = ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished");
@@ -152,12 +154,23 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	@WebMethod	
-	public Vector<Event> getEvents(Date date)  {
-		dbManager.open(false);
-		Vector<Event>  events=dbManager.getEvents(date);
-		dbManager.close();
-		return events;
+//	@WebMethod	
+//	public Vector<Event> getEvents(Date date)  {
+//		dbManager.open(false);
+//		Vector<Event>  events=dbManager.getEvents(date);
+//		dbManager.close();
+//		return events;
+//	}
+	
+	
+		
+	
+	@WebMethod
+	public ExtendedIterator<Event> getEvents(Date date) {
+	    dbManager.open(false);
+	    List<Event> events = dbManager.getEvents(date); // Assuming getEvents returns a List<Event>
+	    dbManager.close();
+	    return new ExtendedIteratorImpl(events);
 	}
 
 

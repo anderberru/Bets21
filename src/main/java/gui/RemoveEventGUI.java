@@ -13,6 +13,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import businessLogic.BLFacade;
+import businessLogic.ExtendedIterator;
 import configuration.UtilDate;
 import domain.Event;
 import exceptions.EventFinished;
@@ -147,7 +148,7 @@ public class RemoveEventGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						ExtendedIterator<Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -158,12 +159,14 @@ public class RemoveEventGUI extends JFrame {
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events)
-							modelEvents.addElement(ev);
+						while (events.hasNext()) {
+					        Event ev = events.next();
+					        modelEvents.addElement(ev);
+					    }
 						jComboBoxEvents.repaint();
 
 						
-						if (events.size() == 0)
+						if (events.isEmpty())
 							jButtonRemove.setEnabled(false);
 						else
 							jButtonRemove.setEnabled(true);

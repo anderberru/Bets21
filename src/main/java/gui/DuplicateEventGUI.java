@@ -13,6 +13,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import businessLogic.BLFacade;
+import businessLogic.ExtendedIterator;
 import configuration.UtilDate;
 import domain.Event;
 import exceptions.EventFinished;
@@ -153,7 +154,7 @@ public class DuplicateEventGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						ExtendedIterator<Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -164,12 +165,14 @@ public class DuplicateEventGUI extends JFrame {
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events)
-							modelEvents.addElement(ev);
+						while (events.hasNext()) {
+					        Event ev = events.next();
+					        modelEvents.addElement(ev);
+					    }
 						jComboBoxEvents.repaint();
 
 						
-						if (events.size() == 0)
+						if (events.isEmpty())
 							jButtonCopy.setEnabled(false);
 						else
 							jButtonCopy.setEnabled(true);
@@ -257,7 +260,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar.getDate());
 			paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 			
-			modelEvents.addAll(facade.getEvents(date));
+			modelEvents.addAll((Collection<? extends Event>) facade.getEvents(date));
 			jComboBoxEvents.setSelectedIndex(0);
 
 		} catch (EventFinished e1) {
